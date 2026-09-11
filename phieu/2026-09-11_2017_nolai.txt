@@ -1,0 +1,30 @@
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI NOLAI · 2026-09-11 20:21 UTC
+feed: 277 pool doc duoc · 0 trang loi
+qua nhip so bo (mc 50K-1,5M · reserve>=40,000 · gia 1h>=+2%): 5
+da tung tang >=3x VA da xep ve <=32% dinh: 2
+
+GASOLINU  0x1e6ea1e89151cdc8443968bf047cfa3177181e18
+   da tang 198.1x · da xep ve 32% dinh · 21h tu dinh
+   nhip lai: gia 1h +14.4% · vol 1h $28,008
+   doi ung that: $180,402   (GeckoTerminal bao tong pool $359,469) · phi pool ? (GT khong khai)
+   von hoa $1,295,679 · cap USO · vol24 $1,735,683
+   pool 0x0e83588ff3914c9801584d55d4dabf9d28880728d73ccff7394ded9aae02afa8
+   LOAI VI NGUOI GIU: KHONG THAY locker nao trong top -> coi nhu RUT DUOC · vi to nhat 2.59% (cua 5%) · top10 17.16% (cua 25%)
+
+ND4  0xa43a9b6eedd8204f445237bf72775ed9b1723d45
+   da tang 315.8x · da xep ve 20% dinh · 35h tu dinh
+   nhip lai: gia 1h +11.1% · vol 1h $13,232
+   doi ung that: $40,990   (GeckoTerminal bao tong pool $73,970) · phi pool ? (GT khong khai)
+   von hoa $710,403 · cap WETH · vol24 $1,199,996
+   pool 0x3c8b091a934fb769da969e84fffc3eb09e69ad389d3a20617ea34f87dc3ea022
+   BO QUA: da bao o loi nay trong 48 gio qua
+
+ung vien: 0
+KHONG CO UNG VIEN MOI
+[46 cu · 306 giay]

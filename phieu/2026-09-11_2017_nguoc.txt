@@ -1,0 +1,49 @@
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI NGUOC · 2026-09-11 20:17 UTC
+feed: 251 pool doc duoc · 2 trang loi
+   loi feed: h24_volume_usd_desc trang 7: HTTP 429
+   loi feed: h24_volume_usd_desc trang 9: HTTP 429
+qua so bo (tuoi>24h · mc 50K-1,5M · gia24 -50%..-20% · reserve>=40,000): 2
+
+GASOLINU  0x1e6ea1e89151cdc8443968bf047cfa3177181e18
+   gia 24h -38.3% · tuoi pool 217h
+   doi ung that: $182,155   (GeckoTerminal bao tong pool $359,828) · phi pool ? (GT khong khai)
+   von hoa $1,306,521 · cap USO · vol24 $1,766,126
+   pool 0x0e83588ff3914c9801584d55d4dabf9d28880728d73ccff7394ded9aae02afa8
+   LOAI VI NGUOI GIU: KHONG THAY locker nao trong top -> coi nhu RUT DUOC · vi to nhat 2.59% (cua 5%) · top10 17.16% (cua 25%)
+
+ND4  0xa43a9b6eedd8204f445237bf72775ed9b1723d45
+   gia 24h -48.8% · tuoi pool 52h
+   doi ung that: $40,834   (GeckoTerminal bao tong pool $68,509) · phi pool ? (GT khong khai)
+   von hoa $707,832 · cap WETH · vol24 $1,204,369
+   pool 0x3c8b091a934fb769da969e84fffc3eb09e69ad389d3a20617ea34f87dc3ea022
+   UNG VIEN
+   khoa PonsV2LaunchLocker giu 8.18% cung -> KHONG rut duoc pool chinh · vi to nhat 2.01% (cua 5%) · top10 15.55% (cua 25%)
+   khu hoi $250: 2.45% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
+   VUNG VAO: khong ap dung (loi nay khong doc nen)
+   ten day du: ND4.eth
+   web: https://jacob.onchaindocumented.com
+   X:   khong khai
+   Y TUONG: ⬜ CHUA KIEM — mo web o tren, MO HET CAC TRANG (ca /treasury, /docs...),
+            tu ghi MOT cau. Cam doan tu cai ten, cam dung o trang chu (ca FAB 09/09).
+   DANH GIA Y TUONG — bat buoc dien du 3 o, xem LUAT.md muc 4.5:
+      bac:      [LOP VO / GHEP LAI CO CHO MOI / TU LAM HA TANG]
+      chep cua: [ten cai goc — hoac 'chua thay cai goc', cam bo trong]
+      phep thu: [cai no khai kiem duoc tren chuoi bang gi]
+      🔴 bac KHONG doi co lenh, KHONG doi cua, KHONG doi moc ban.
+   🔴 7 DIA CHI CUNG MA tren chuoi nay (19 pool). To nhat 0xa43a9b6EEdD8204F445237Bf72775eD9b1723d45 von hoa $1,206,868
+      /search cat o 50 ket qua nen day la SAN, khong phai tran.
+      🔴 /search tra VON HOA LON NHAT trong moi pool -> pool bui thoi so len
+         (ca CRUMBS 09/09: $4.020.453 o /search, pool chinh that $324.227).
+      🔴 SO DIA CHI DU 42 KY TU, cam so duoi (ca STREAM `f94c` · CRUMBS `9136`
+         · MARIO `420c` — ba ca trong hai ngay).
+   ⏰ GIO IN PHIEU: 2026-09-11 20:21 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   DONG DAN VAO SO DA BAO: 0xa43a9b6eedd8204f445237bf72775ed9b1723d45 | 2026-09-11T20:21:19Z | ND4 | NGUOC
+
+ung vien: 1
+[39 cu · 202 giay]

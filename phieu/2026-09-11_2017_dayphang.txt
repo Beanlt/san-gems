@@ -1,0 +1,74 @@
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI DAY PHANG · 2026-09-11 20:30 UTC
+feed: 277 pool · 0 trang loi
+qua loc tho (mc 50,000-1,000,000 · reserve>=25,000): 42
+da luu -> chay tiep: python3 SAN.py dayphang-nen 0 17
+[33 cu · 243 giay]
+doc duoc nen: 6 · pool qua non (<48 nen): 11 · loi goi: 0
+da ghi 6 dong vao DO-DEM.md (co che tu cai thien)
+qua no>=3x VA xep<=30% VA nam im>=12/24: 3
+
+MA              da no  gia/dinh gio sat TV vol 1h/nen
+RIVN             9.3x     15.7%       24/24     1.0x
+RIVN            12.9x      8.3%       24/24     9.0x
+ibm              1.2x     84.1%       24/24     0.3x
+RIVN             3.4x     30.3%       24/24     0.0x
+RIDE          2433.4x      2.1%       15/24     0.3x
+BYCOCKET       905.1x     12.2%        9/24     0.3x
+
+[29 cu · 228 giay]
+doc duoc nen: 4 · pool qua non (<48 nen): 13 · loi goi: 0
+da ghi 4 dong vao DO-DEM.md (co che tu cai thien)
+qua no>=3x VA xep<=30% VA nam im>=12/24: 1
+
+MA              da no  gia/dinh gio sat TV vol 1h/nen
+HG               1.0x     95.2%       24/24     0.1x
+ibm              1.1x     95.1%       24/24     2.1x
+QUBT             6.2x     16.7%       24/24     0.2x
+PONIE          276.1x     27.6%       10/24     0.7x
+
+[27 cu · 195 giay]
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI DAY PHANG · phieu · 2026-09-11 20:37 UTC
+
+RIDE  0x8b3e3ba1a55b939f93f0a205f94520b9468e17f8
+   da no 2433.4x · gia 2.1% dinh (cua <=30%) · 20h tu dinh
+   NAM IM: 15/24 gio sat trung vi (cua >=12)
+   doi ung that: $20,001 (GT bao tong pool $32,546) · phi pool ? (GT khong khai)
+   von hoa $168,190 · cap RIVN · pool 0x255cce38af51f693038110410f0c3d111698945eb5f9aec414af11ec9b9bcf44
+   CHUA CO TIN HIEU VAO: khoi luong 1h = 0.3x nen (cua >=3x)
+
+RIVN  0xb1bf26c1d20ff267a4f93550d1e0d06ac40a114b
+   da no 9.3x · gia 15.7% dinh (cua <=30%) · 227h tu dinh
+   NAM IM: 24/24 gio sat trung vi (cua >=12)
+   doi ung that: CHUA DO DUOC (GT bao tong pool $181,912) · phi pool ? (GT khong khai)
+   von hoa $613,244 · cap USDG 1% · pool 0xb30a75b200d98a600a3766869344928e35823e23
+   ⛔ LOAI: chua do duoc doi ung (LOI GOI: pool khong phai V4 (id 42 ky tu))
+
+RIVN  0xb1bf26c1d20ff267a4f93550d1e0d06ac40a114b
+   da no 12.9x · gia 8.3% dinh (cua <=30%) · 20h tu dinh
+   NAM IM: 24/24 gio sat trung vi (cua >=12)
+   doi ung that: CHUA DO DUOC (GT bao tong pool $86,779) · phi pool ? (GT khong khai)
+   von hoa $614,098 · cap USDG 0.5% · pool 0xfa29e6cd2536e82e12ef269a80a42df4685ef5177066ecd5f0698d0458e0ec3d
+   ⛔ LOAI: chua do duoc doi ung (khong co Swap trong 6.000 khoi gan nhat)
+
+QUBT  0x59818904ab4ce163b3ce4ffb64f2d6ca02c434b4
+   da no 6.2x · gia 16.7% dinh (cua <=30%) · 192h tu dinh
+   NAM IM: 24/24 gio sat trung vi (cua >=12)
+   doi ung that: CHUA DO DUOC (GT bao tong pool $137,071) · phi pool ? (GT khong khai)
+   von hoa $337,592 · cap USDG 0.3% · pool 0x227bbce9a81b3694b01754298a983be3f9e44a93
+   ⛔ LOAI: chua do duoc doi ung (LOI GOI: pool khong phai V4 (id 42 ky tu))
+
+ung vien: 0
+KHONG CO UNG VIEN MOI
+[2 cu · 3 giay]
