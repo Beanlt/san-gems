@@ -1,0 +1,20 @@
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI NGUOC · 2026-09-11 23:09 UTC
+feed: 277 pool doc duoc · 0 trang loi
+qua so bo (tuoi>24h · mc 50K-1,5M · gia24 -50%..-20% · reserve>=40,000): 1
+
+ND4  0xa43a9b6eedd8204f445237bf72775ed9b1723d45
+   gia 24h -31.1% · tuoi pool 55h
+   doi ung that: $40,925   (GeckoTerminal bao tong pool $76,024) · phi pool ? (GT khong khai)
+   von hoa $709,398 · cap WETH · vol24 $1,148,862
+   pool 0x3c8b091a934fb769da969e84fffc3eb09e69ad389d3a20617ea34f87dc3ea022
+   BO QUA: da bao o loi nay trong 48 gio qua
+
+ung vien: 0
+KHONG CO UNG VIEN MOI
+[32 cu · 200 giay]
