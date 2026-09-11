@@ -1,0 +1,38 @@
+name: san-gems
+# Quet tu dong tren cloud cua GitHub. Chay DUNG SAN.py — mot ban code duy nhat.
+# Khong can laptop Bean mo. Mien phi voi repo rieng tu.
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'      # moi 3 gio UTC — khop bang lich LUAT.md muc 10.1
+  workflow_dispatch:            # bam tay de chay ngay
+
+permissions:
+  contents: write
+
+concurrency:
+  group: san-gems
+  cancel-in-progress: false
+
+jobs:
+  quet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Chay SAN.py
+        run: bash chay.sh
+
+      - name: Ghi ket qua vao repo
+        run: |
+          git config user.name  "san-gems bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet && echo "khong co gi moi" && exit 0
+          git commit -m "quet $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
