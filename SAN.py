@@ -63,6 +63,27 @@ HATANG={"0x8366a39cc670b4001a1121b8f6a443a643e40951":"PoolManager",
         "0x000000000000000000000000000000000000dead":"vi dot"}
 
 # 🔴 LOAI THANG TU TEN.
+# 🆕 v5.1: bat ca MA DON BAY an theo ticker — NVDAx3L · OPENAIx1L · ANTHROPICx1L · TSLA3S...
+#    Ca that: NVDAx3L lot qua loc tho ngay 12/09 (ca thu SAU cua lo hong danh sach ten).
+#    Chi cat hau to khi PHAN GOC nam trong danh sach -> memecoin that ten dang "MOON2L"
+#    KHONG bi loai oan.
+import re as _re
+_DON_BAY=_re.compile(r"^(.+?)[Xx]?(\d+)[LSls]$")
+def goc_ten(t):
+    """NVDAx3L -> NVDA · OPENAIx1L -> OPENAI · TSLA3S -> TSLA · MOON -> MOON"""
+    m=_DON_BAY.match(t or "")
+    return m.group(1) if m else (t or "")
+
+def loai_tu_ten(ten):
+    """True = loai thang. Kiem ca ten nguyen lan ten da cat hau to don bay."""
+    t=(ten or "").upper()
+    return t in CO_PHIEU or goc_ten(t).upper() in CO_PHIEU
+
+def canh_bao_ten(ten):
+    """True = in ⚠️, KHONG loai (KYLUAT.md muc 1, ca LUNA9)."""
+    t=(ten or "").upper()
+    return t in CO_PHIEU_NGO or goc_ten(t).upper() in CO_PHIEU_NGO
+
 CO_PHIEU={"SPY","AAPL","NVDA","GLD","MSFT","AMZN","META","GOOGL","QQQ","TSLA","MSTR","MU",
           "HIMS","LIT","TSM","SPCX","AI","ETH","USDG","QC","BTC","COIN","PLTR","RBLX","HOOD","SOL",
           "RIVN","QUBT","AMD","OPENAI","ANTHROPIC","USO"}
@@ -166,7 +187,7 @@ def loc_tho(pools):
         res=so(a.get("reserve_in_usd"))
         ten=(a.get("name") or "").split("/")[0].strip()
         if mc is None or res is None: continue
-        if ten.upper() in CO_PHIEU:   continue
+        if loai_tu_ten(ten):          continue
         if not (MC_MIN<=mc<=MC_MAX):  continue
         if res < RESERVE_SO:          continue
         phi,biet=doc_phi(a)
@@ -610,7 +631,7 @@ def main():
             elif r["loi"]:      tt="⛔ LOAI: "+doc_cua(r)
             else:               tt="LOAI VI NGUOI GIU: "+doc_cua(r)
         print("\n%s  %s"%(c["ma"],c["base"]))
-        if c["ma"].upper() in CO_PHIEU_NGO:
+        if canh_bao_ten(c["ma"]):
             print("   ⚠️ MA TRUNG TICKER SAN MY — canh bao, KHONG phai cua chan. Mo ra kiem.")
         in_bon_ve(c)
         print("   doi ung that: %s   (GeckoTerminal bao tong pool $%s) · %s"%(
