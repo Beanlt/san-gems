@@ -1,4 +1,8 @@
-# SO DO TICH LUY — loi DAY PHANG
+# SO DO CU — loi DAY PHANG (da bo 12/09)
+
+> 🔴 SO NAY DA DONG. Loi DAY PHANG khong con ton tai (LUAT.md v8 muc 6.5).
+> Giu lai 25 dong so lieu cu de sau nay quet do nhay nguong 'nam im'.
+> So moi la DO-DEM.md — dinh dang KHAC HAN, cam tron hai bang.
 
 > Script tu ghi moi luot quet. Muc dich: gom du 30 con de chot nguong buoc 3
 > (gio nam sat trung vi) va buoc 7 (khoi luong). CAM sua tay.
