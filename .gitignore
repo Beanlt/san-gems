@@ -4,3 +4,5 @@ launchd.out
 launchd.err
 dp_state.json
 dp_cands.json
+*.v2.py
+*.v2.sh

@@ -1,25 +1,24 @@
-name: san-gems
-# Lo NHANH: NGUOC + NO LAI, moi 3 gio. Chay DUNG SAN.py — mot ban code duy nhat.
-# 🔴 VA 11/09: DAY PHANG da tach sang workflow rieng (dayphang.yml). Luot dau tien chay
-#    ca ba loi het 20m27s tren tran 30m — cham tran thi job bi huy, KHONG commit gi,
-#    moc .dayphang_ khong duoc ghi, luot sau lai chay lai tu dau: vong lap chet.
+name: san-gems-dayphang
+# Loi DAY PHANG: moi ngay MOT lan, tran 60 phut.
+# 🔴 Tach khoi san.yml ngay 11/09 vi no la con voi: keo nen 1.000 cay cho tung con trong ro,
+#    moi cu gian 2,2-3,5 giay, cong 15 giay nghi moi lan GeckoTerminal tra 429.
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '30 0 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: san-gems
+  group: san-gems-dayphang
   cancel-in-progress: false
 
 jobs:
-  quet:
+  dayphang:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -27,8 +26,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Chay SAN.py (NGUOC + NO LAI)
-        run: bash chay.sh nhanh
+      - name: Chay SAN.py (DAY PHANG)
+        run: bash chay.sh dayphang
 
       - name: Ghi ket qua vao repo
         if: always()
@@ -38,5 +37,5 @@ jobs:
           git pull --rebase --autostash origin main || true
           git add -A
           git diff --staged --quiet && echo "khong co gi moi" && exit 0
-          git commit -m "quet nhanh $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git commit -m "quet dayphang $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push

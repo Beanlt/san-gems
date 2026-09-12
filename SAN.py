@@ -28,7 +28,17 @@ RESERVE_SO    = int(2*DOI_UNG_SAN)               # = 40.000. Loc so bo; reserve 
 GIO_KHONG_BAO_LAI = 48
 VI_TO_MAX     = 5.0         # vi nguoi to nhat ngoai pool. Nguong VUNG duy nhat (>40 ca).
 TOP10_MAX     = 25.0
-TRANG=10; GIAN=2.2; LO_POOL=12
+TRANG=10; LO_POOL=12
+# 🔴 VA 11/09: may GitHub bi GeckoTerminal siet tan suat nang hon may nha — luot 20:17
+#    mat 2 trang feed vi 429. Gian them khi chay tren GitHub.
+#    KHONG phai nguong san, chi la nhip goi mang.
+GIAN = 3.5 if os.environ.get("GITHUB_ACTIONS") else 2.2
+# 🔴 VA 11/09: dai 6.000 khoi = 10,3 phut (do that 11/09 15:09). Pool nho 10 phut khong co
+#    lenh nao la chuyen thuong -> hang loat con bi ghi ⛔ OAN. Luot VET nhin lui rong hon.
+# ⬜ CHUA DO tran thoi gian cua dai 60.000 khoi voi lo 6 pool. Da do: dai 60.000 voi 1 pool
+#    chay sach (ca ATLAS 11/09 15:09). Thay `log query timed out` trong phieu thi ha
+#    LO_VET xuong 3, hoac ha DAI_VET xuong 30.000. Sua xong ghi lai ket qua vao day.
+DAI_VET=60000; LO_VET=6
 
 # ---- RIENG LOI NGUOC ----
 GIA_MIN,GIA_MAX = -50.0,-20.0
@@ -64,8 +74,23 @@ HATANG={"0x8366a39cc670b4001a1121b8f6a443a643e40951":"PoolManager",
         "0xf017306a84d1be3a72ae444b303d0c3d92a0d852":"hop dong phat hanh Pons v2",
         "0x000000000000000000000000000000000000dead":"vi dot"}
 
+# 🔴 LOAI THANG TU TEN. Ca da lot that: OPENAI (09/09) · AMD (09/09) · ANTHROPIC (10/09)
+#    · RIVN + QUBT (11/09 — lot toi tan danh sach ung vien DAY PHANG, chi tinh co bi
+#      cua doi ung chan). Day la lan va thu hai cua danh sach nay.
 CO_PHIEU={"SPY","AAPL","NVDA","GLD","MSFT","AMZN","META","GOOGL","QQQ","TSLA","MSTR","MU",
-          "HIMS","LIT","TSM","SPCX","AI","ETH","USDG","QC","BTC","COIN","PLTR","RBLX","HOOD","SOL"}
+          "HIMS","LIT","TSM","SPCX","AI","ETH","USDG","QC","BTC","COIN","PLTR","RBLX","HOOD","SOL",
+          "RIVN","QUBT","AMD","OPENAI","ANTHROPIC","USO"}
+
+# ⚠️ CANH BAO, KHONG LOAI. Ma trung ticker san My nhung CHUA co ca that tren chuoi nay.
+#    In ra phieu de nguoi doc tu quyet — dung lam cua chan, vi luat cam loai bang cai ten
+#    khi chua mo ra kiem (KYLUAT.md muc 1, ca LUNA9).
+# ⬜ CHUA QUET DO NHAY: chua biet danh sach nay co bao gio bao nham mot memecoin that khong.
+#    Lan sau doc phieu, dem so lan hien ⚠️ va xem co ca nao bao nham -> roi moi ban co
+#    chuyen mot mã nao tu day sang CO_PHIEU khong.
+CO_PHIEU_NGO={"INTC","SMH","ASML","QCOM","EWY","SKYHY","COST","GME","AMC","NFLX","DIS","BA","F",
+              "GM","UBER","LYFT","SOFI","PYPL","ARM","AVGO","ORCL","CRM","ADBE","IBM","GS","JPM",
+              "BAC","WMT","TGT","KO","PEP","MCD","NKE","SBUX","XOM","CVX","PFE","JNJ","UNH","V",
+              "MA","T","VZ","CSCO","QS","LCID","NIO","PLUG","RKLB","ACHR","IONQ","RGTI","SMCI"}
 
 T0=time.time(); CU=[0]
 
@@ -394,12 +419,22 @@ def doi_ung_that(cands):
         if len(c["pool"])!=66: hong[c["pool"]]="pool khong phai V4 (id %d ky tu)"%len(c["pool"])
     for i in range(0,len(v4),LO_POOL):
         keo(v4[i:i+LO_POOL],6000); time.sleep(1.0)
+    # LUOT VET: pool nao chua thay Swap thi nhin lui rong hon truoc khi ghi ⛔.
+    # Chi them co hoi do, KHONG doi bat ky nguong san nao.
+    thieu=[p for p in v4 if p not in last]
+    if thieu:
+        print("   luot vet: %d pool chua thay Swap trong 6.000 khoi -> nhin lui %s khoi"%(
+              len(thieu),format(DAI_VET,",")))
+        for i in range(0,len(thieu),LO_VET):
+            keo(thieu[i:i+LO_VET],DAI_VET); time.sleep(1.0)
+        con=[p for p in thieu if p not in last]
+        print("   luot vet xong: do them duoc %d, con lai %d"%(len(thieu)-len(con),len(con)))
     for c in cands:
         c["dothat"]=None; c["ly_do"]=""
         if not c["base"] or not c["quote"]: c["ly_do"]="thieu dia chi token"; continue
         if c["pool"] not in last:
             c["ly_do"]=("LOI GOI: "+hong[c["pool"]]) if c["pool"] in hong \
-                       else "khong co Swap trong 6.000 khoi gan nhat"
+                       else "khong co Swap trong %s khoi gan nhat (da chay luot vet)"%format(DAI_VET,",")
             continue
         if not c["gia"]: c["ly_do"]="khong co gia USD"; continue
         b,sq,L=last[c["pool"]]; sqrtP=sq/(2**96)
@@ -549,6 +584,8 @@ def dp_phieu(so_da_bao):
             elif r["loi"]:      tt="⛔ LOAI: "+doc_cua(r)
             else:               tt="LOAI VI NGUOI GIU: "+doc_cua(r)
         print("\n%s  %s"%(c["ma"],c["base"]))
+        if c["ma"].upper() in CO_PHIEU_NGO:
+            print("   ⚠️ MA TRUNG TICKER SAN MY — canh bao, KHONG phai cua chan. Mo ra kiem.")
         print("   da no %.1fx · gia %.1f%% dinh (cua <=%.0f%%) · %.0fh tu dinh"%(
             c["no_lan"],c["xep_tv"]*100,DP_XEP_TOI*100,c["gio_tu_dinh"]))
         print("   NAM IM: %d/24 gio sat trung vi (cua >=%d)"%(c["gio_sat"],DP_GIO_SAT))
@@ -634,6 +671,8 @@ def main():
             elif r["loi"]:      tt="⛔ LOAI: "+doc_cua(r)
             else:               tt="LOAI VI NGUOI GIU: "+doc_cua(r)
         print("\n%s  %s"%(c["ma"],c["base"]))
+        if c["ma"].upper() in CO_PHIEU_NGO:
+            print("   ⚠️ MA TRUNG TICKER SAN MY — canh bao, KHONG phai cua chan. Mo ra kiem.")
         if loi=="NGUOC":
             print("   gia 24h %.1f%% · tuoi pool %.0fh"%(c["h24"],c["tuoi"]))
         else:
