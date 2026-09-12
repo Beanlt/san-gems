@@ -1,0 +1,50 @@
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI DAY PHANG · 2026-09-12 04:33 UTC
+feed: 280 pool · 0 trang loi
+qua loc tho (mc 50,000-1,000,000 · reserve>=25,000): 47
+da luu -> chay tiep: python3 SAN.py dayphang-nen 0 17
+[32 cu · 227 giay]
+doc duoc nen: 5 · pool qua non (<48 nen): 12 · loi goi: 0
+da ghi 5 dong vao DO-DEM.md (co che tu cai thien)
+qua no>=3x VA xep<=30% VA nam im>=12/24: 1
+
+MA              da no  gia/dinh gio sat TV vol 1h/nen
+NVDAx3L          4.4x     27.7%       24/24     8.6x
+ibm              1.2x     86.2%       24/24     0.7x
+SHRUB        4908220164.2x      1.3%        7/24     0.2x
+Rialto         180.7x     12.9%        5/24     0.1x
+UNIPCS        2214.5x      9.2%        3/24     0.0x
+
+[29 cu · 221 giay]
+doc duoc nen: 2 · pool qua non (<48 nen): 15 · loi goi: 0
+da ghi 2 dong vao DO-DEM.md (co che tu cai thien)
+qua no>=3x VA xep<=30% VA nam im>=12/24: 0
+
+MA              da no  gia/dinh gio sat TV vol 1h/nen
+ibm              1.1x     97.5%       24/24     0.5x
+FLY            412.5x      3.8%        5/24     0.3x
+
+[28 cu · 207 giay]
+NGUONG DANG CHAY: mc $50,000-$1,500,000 · khu hoi <=5.0% · co lenh $250 · KHONG co moc ban
+   NGUOC: gia24 -50..-20% · tuoi pool >=24h
+   NO LAI: no >=3.0x · xep <=32% dinh · nhip 1h >=+2.0%
+   DAY PHANG: khu hoi <=8% · xep <=30% · nam im >=12/24 · vol >=3x
+   CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
+   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
+LOI DAY PHANG · phieu · 2026-09-12 04:41 UTC
+
+NVDAx3L  0xf51fb54de60f6e16252e852a5ed0e60b8307606a
+   da no 4.4x · gia 27.7% dinh (cua <=30%) · 276h tu dinh
+   NAM IM: 24/24 gio sat trung vi (cua >=12)
+   doi ung that: CHUA DO DUOC (GT bao tong pool $301,813) · phi pool ? (GT khong khai)
+   von hoa $614,546 · cap USDG 0.3% · pool 0x59de14b62a322e317e753fa23a23b72db0b8c4b593649e69ebcef09c456e2718
+   ⛔ LOAI: chua do duoc doi ung (tinh ra $1,387,674 — vo ly so voi tong pool $301,813, pool thanh khoan co cum)
+
+ung vien: 0
+KHONG CO UNG VIEN MOI
+[2 cu · 1 giay]
