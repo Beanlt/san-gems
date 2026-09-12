@@ -7,12 +7,14 @@ NGUONG DANG CHAY · MOT LOI DUY NHAT, BON VE (Bean chot 12/09)
    CUA NANG: vi to nhat <=5% · top10 <=25% · doi ung san $20,000
    KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)
 
-PHIEU · 2026-09-12 20:22 UTC
-feed: 281 pool doc duoc · 0 trang loi
-qua loc tho (mc $50,000-$1,500,000 · reserve>=$40,000): 43
-doc duoc nen: 7 · pool qua non (<48 nen): 36 · loi goi: 0
-qua VE 1 + VE 2 + VE 4: 0
+PHIEU · 2026-09-12 23:38 UTC
+feed: 262 pool doc duoc · 2 trang loi
+   loi feed: h24_volume_usd_desc trang 6: HTTP 429
+   loi feed: h24_volume_usd_desc trang 7: HTTP 429
+qua loc tho (mc $50,000-$1,500,000 · reserve>=$40,000): 40
+doc duoc nen: 7 · pool qua non (<48 nen): 33 · loi goi: 0
+qua VE 1 + VE 2 + VE 4: 1
 qua tiep VE 3 (tin hieu vao): 0
 da ghi 7 dong anh chup vao DO-DEM.md
 KHONG CO UNG VIEN
-[97 cu · 751 giay]
+[93 cu · 717 giay]
