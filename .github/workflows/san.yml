@@ -1,8 +1,6 @@
 name: san-gems
-# Lo NHANH: NGUOC + NO LAI, moi 3 gio. Chay DUNG SAN.py — mot ban code duy nhat.
-# 🔴 VA 11/09: DAY PHANG da tach sang workflow rieng (dayphang.yml). Luot dau tien chay
-#    ca ba loi het 20m27s tren tran 30m — cham tran thi job bi huy, KHONG commit gi,
-#    moc .dayphang_ khong duoc ghi, luot sau lai chay lai tu dau: vong lap chet.
+# MOT loi duy nhat, BON VE (SCRIPT.md v5 · LUAT.md v8, Bean chot 12/09).
+# Ba loi cu NGUOC / NO LAI / DAY PHANG da gop lam mot — khong con workflow rieng.
 
 on:
   schedule:
@@ -27,8 +25,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Chay SAN.py (NGUOC + NO LAI)
-        run: bash chay.sh nhanh
+      - name: Chay SAN.py
+        run: bash chay.sh
 
       - name: Ghi ket qua vao repo
         if: always()
@@ -38,5 +36,5 @@ jobs:
           git pull --rebase --autostash origin main || true
           git add -A
           git diff --staged --quiet && echo "khong co gi moi" && exit 0
-          git commit -m "quet nhanh $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git commit -m "quet $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
