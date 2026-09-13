@@ -1,10 +1,10 @@
 name: san-gems
-# MOT loi duy nhat, BON VE (SCRIPT.md v5 · LUAT.md v8, Bean chot 12/09).
-# Ba loi cu NGUOC / NO LAI / DAY PHANG da gop lam mot — khong con workflow rieng.
+# MOT loi duy nhat, NAM VE (SCRIPT.md v6.1 · LUAT.md v12, Bean chot 13/09).
+# So ve = thu tu chay: 1 rot nat · 2 nam li · 3 het tao day · 4 sach nang · 5 co nguoi vao.
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '17 */2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -35,6 +35,22 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --rebase --autostash origin main || true
           git add -A
-          git diff --staged --quiet && echo "khong co gi moi" && exit 0
+          if git diff --staged --quiet; then
+            echo "khong co gi moi"
+            exit 0
+          fi
           git commit -m "quet $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git push
+          # 🔴 THU LAI BA LAN. Ca that 13/09 luot #9: GitHub tra
+          #    'remote: fatal error in commit_refs' -> '! [remote rejected] main -> main'.
+          #    Loi PHIA MAY CHU, thoang qua. Commit da tao nhung phieu 08:51 mat luon.
+          for i in 1 2 3; do
+            if git push; then
+              echo "day thanh cong o lan $i"
+              exit 0
+            fi
+            echo "day hong lan $i — cho 20 giay roi keo ve va thu lai"
+            sleep 20
+            git pull --rebase --autostash origin main || true
+          done
+          echo "🔴 DAY HONG CA BA LAN — phieu luot nay khong len duoc repo"
+          exit 1
