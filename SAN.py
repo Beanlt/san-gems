@@ -247,6 +247,15 @@ def ba_ve(c):
     n=sorted(o,key=lambda x:int(x[0]))
     c["so_nen"]=len(n)
     if len(n)<NEN_MIN:
+        # 🆕 v7.1 (14/09, Bean chot): con non VAN tinh dinh tu so nen it oi no co.
+        #   Truoc day return thang -> dong DC trong so chi co gia, khong co 'gia/dinh'
+        #   va 'h tu dinh' => khong bao gio tra loi duoc cau "36 hay 48 nen".
+        #   🔴 KHONG doi ket qua cham: van return False, con non van KHONG vao hang san.
+        if n:
+            _d=[float(x[4]) for x in n]; _dinh=max(_d)
+            if _dinh>0:
+                c["dinh"]=_dinh; c["gia_nen"]=_d[-1]; c["xep"]=_d[-1]/_dinh
+                c["gio_tu_dinh"]=(int(n[-1][0])-int(n[_d.index(_dinh)][0]))/3600
         c["ly_nen"]="chi %d cay nen 1h (can >=%d, pool qua non)"%(len(n),NEN_MIN); return False
     dong=[float(x[4]) for x in n]          # CLOSE — dung cho ca dinh, gia nay, va day
     volk=[float(x[5]) for x in n]
@@ -524,15 +533,25 @@ def doc_anh_cu(path=SO_ANH):
     gan={}; het={}
     if not os.path.exists(path): return gan,het
     for dong in open(path,encoding="utf-8"):
-        if not dong.startswith("| 20"): continue
+        # 🆕 v7.1 (14/09): nhan CA dong 'DC' (ro doi chung — pool qua non).
+        #   Truoc day chi nhan '| 20' nen dong DC chi duoc GHI, khong bao gio duoc CHAM
+        #   ket qua 6/24/72h => 29 dong moi luot nam khong, va cau hoi "con non song hay
+        #   chet" khong co lay mot con so. Day la ro doi chung LUAT.md muc 11 dang thieu.
+        dc = dong.startswith("| DC 20")
+        if not (dong.startswith("| 20") or dc): continue
         ph=[x.strip() for x in dong.strip().strip("|").split("|")]
         if len(ph)<13: continue
         try:
             a=ph[2].strip("`").lower()
-            g=calendar.timegm(time.strptime(ph[0][:16],"%Y-%m-%d %H:%M"))
+            moc=ph[0][3:].strip() if dc else ph[0]     # bo tien to 'DC '
+            g=calendar.timegm(time.strptime(moc[:16],"%Y-%m-%d %H:%M"))
             anh={"gio":g,"ma":ph[1],"vi":_so_o(ph[3]),"doi_ung":_so_o(ph[4]),
-                 "mc":_so_o(ph[5]),"gia":_so_o(ph[6]) if len(ph)>=14 else None}
+                 "mc":_so_o(ph[5]),"gia":_so_o(ph[6]) if len(ph)>=14 else None,
+                 "non":dc}
             het.setdefault(a,[]).append(anh)
+            # 🔴 Con non KHONG duoc lam moc cho VE 5: no chua tung qua ba ve gia,
+            #   so hai anh cua no la so hai tap khac nhau (KYLUAT.md muc 4).
+            if dc: continue
             if a not in gan or g>gan[a]["gio"]: gan[a]=anh
         except Exception: pass
     return gan,het
@@ -578,19 +597,23 @@ def ghi_anh(rows,path=SO_ANH,doi_chung=()):
             f.write("> Muc dich: luot sau doc anh cu -> biet SO VI tang hay giam, DOI UNG tang hay\n")
             f.write("> giam. Khong can dung lai qua khu tu log Transfer (⛔ qua dat).\n")
             f.write("> Bean chot 12/09. Du 30 dong cung mot con -> quet do nhay duoc nguong ve 2 va 5.\n")
-            f.write("> Cot 'nam ve': 5 ky tu, '-' la truot, '.' la chua chay toi ve do.\n\n")
-            f.write("| gio UTC | ma | dia chi | so vi | doi ung | von hoa | gia | gia/dinh | gio duoi | vol 1h/nen | nam ve | nhip h1 | vi h1 | lenh/vi |\n")
-            f.write("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n")
+            f.write("> Cot 'nam ve': 5 ky tu, '-' la truot, '.' la chua chay toi ve do.\n")
+            f.write("> Cot 'h tu dinh' (them 14/09): dinh doi pool cach day may gio. Day la so quyet\n")
+            f.write("> duoc NEN_MIN nen la 36 hay 48 — dinh toi muon thi cham som la cham khi chua co dinh.\n\n")
+            f.write("| gio UTC | ma | dia chi | so vi | doi ung | von hoa | gia | gia/dinh | h tu dinh | gio duoi | vol 1h/nen | nam ve | nhip h1 | vi h1 | lenh/vi |\n")
+            f.write("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n")
         for c in rows:
             r=c.get("cua") or {}
             tl,tlv,lpv,_ = nhip_lenh(c)
-            f.write("| %s | %s | `%s` | %s | %s | $%s | %s | %.1f%% | %d/%d | %s | %s | %s | %s | %s |\n"%(
+            f.write("| %s | %s | `%s` | %s | %s | $%s | %s | %.1f%% | %s | %d/%d | %s | %s | %s | %s | %s |\n"%(
                 g,c["ma"],c["base"] or "?",
                 format(int(r["so_vi"]),",") if r.get("so_vi") else "—",
                 ("$"+format(int(c["dothat"]),",")) if c.get("dothat") else "—",
                 format(int(c["mc"]),","),
                 ("%.10g"%c["gia"]) if c.get("gia") else "—",
-                c.get("xep",0)*100, c.get("gio_duoi",0),GIO_NAM,
+                c.get("xep",0)*100,
+                ("%.0fh"%c["gio_tu_dinh"]) if c.get("gio_tu_dinh") is not None else "—",
+                c.get("gio_duoi",0),GIO_NAM,
                 ("%.1fx"%c["vol_lan"]) if c.get("vol_lan") else "—",
                 _ma_ve(c),
                 ("%.2f"%tl) if tl is not None else "—",
@@ -599,9 +622,12 @@ def ghi_anh(rows,path=SO_ANH,doi_chung=()):
         if doi_chung:
             for c in doi_chung:
                 tl,tlv,lpv,_ = nhip_lenh(c)
-                f.write("| DC %s | %s | `%s` | — | — | $%s | %s | — | %d nen | — | ..... | %s | %s | %s |\n"%(
+                f.write("| DC %s | %s | `%s` | — | — | $%s | %s | %s | %s | %d nen | — | ..... | %s | %s | %s |\n"%(
                     g,c["ma"],c["base"] or "?", format(int(c["mc"]),","),
-                    ("%.10g"%c["gia"]) if c.get("gia") else "—", c.get("so_nen") or 0,
+                    ("%.10g"%c["gia"]) if c.get("gia") else "—",
+                    ("%.1f%%"%(c["xep"]*100)) if c.get("xep") else "—",
+                    ("%.0fh"%c["gio_tu_dinh"]) if c.get("gio_tu_dinh") is not None else "—",
+                    c.get("so_nen") or 0,
                     ("%.2f"%tl) if tl is not None else "—",
                     ("%.2f"%tlv) if tlv is not None else "—",
                     ("%.1f"%lpv) if lpv is not None else "—"))
@@ -688,8 +714,11 @@ def cham_ket_qua(het,gia_nay,path=SO_ANH):
                 if not (moc <= tuoi <= moc*(1+KQ_LECH)): continue
                 if (a,gio_txt,"%dh"%moc) in da: continue
                 d=(gia_nay[a]/anh["gia"]-1)*100
-                moi.append("| KQ | %s | `%s` | %s | %dh | %.10g | %.10g | %+.1f%% |\n"%(
-                    anh["ma"],a,gio_txt,moc,anh["gia"],gia_nay[a],d))
+                # 🆕 v7.1: o cuoi ghi ro anh nay thuoc nhom nao. Khong co o nay thi hai
+                #   nhom tron lam mot va bang so "non vs du tuoi" khong lap duoc.
+                moi.append("| KQ | %s | `%s` | %s | %dh | %.10g | %.10g | %+.1f%% | %s |\n"%(
+                    anh["ma"],a,gio_txt,moc,anh["gia"],gia_nay[a],d,
+                    "non" if anh.get("non") else "du"))
     if moi:
         with open(path,"a",encoding="utf-8") as f: f.writelines(moi)
     return len(moi)
