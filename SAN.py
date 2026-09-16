@@ -96,6 +96,13 @@ HATANG={"0x8366a39cc670b4001a1121b8f6a443a643e40951":"PoolManager",
         "0x73991a25c818bf1f1128deaab1492d45638de0d3":"NonfungiblePositionManager v3",
         "0x000000000000000000000000000000000000dead":"vi dot"}
 
+# 🆕 v7.3 (16/09) KHOA CUA LO DOPPLER. Vi the thanh khoan do CHINH hop dong khoi tao giu,
+#   khong co locker nao cam token -> cua locker cu luon bao "khong thay". Chi ghi hop dong DA DOC MA.
+#   Da doc: exitLiquidity() la duong _burn DUY NHAT va doi status==Initialized (SCRIPT.md muc 7.10).
+DOPPLER_KHOA={"0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544":"DopplerHookInitializer"}
+DOPPLER_KHOA_OK=(2,3)       # 2 Locked · 3 Graduated = khong con duong rut. 1 Initialized = RUT DUOC
+DOPPLER_TEN=("Uninitialized","Initialized","Locked","Graduated","Exited")
+
 # 🔴 LOAI THANG TU TEN.
 # 🆕 v5.1: bat ca MA DON BAY an theo ticker — NVDAx3L · OPENAIx1L · ANTHROPICx1L · TSLA3S...
 #    Ca that: NVDAx3L lot qua loc tho ngay 12/09 (ca thu SAU cua lo hong danh sach ten).
@@ -520,9 +527,57 @@ def doc_goplus(g):
     return bool(xau),dong
 
 # ---------- 4. HAI CUA NANG ----------
-def cua_nguoi_giu(ca,lan=5):
+def keccak256(data):
+    """Keccak-256 thuan Python (khong can thu vien ngoai — may GitHub khong cai pycryptodome)."""
+    RC=[0x0000000000000001,0x0000000000008082,0x800000000000808A,0x8000000080008000,
+        0x000000000000808B,0x0000000080000001,0x8000000080008081,0x8000000000008009,
+        0x000000000000008A,0x0000000000000088,0x0000000080008009,0x000000008000000A,
+        0x000000008000808B,0x800000000000008B,0x8000000000008089,0x8000000000008003,
+        0x8000000000008002,0x8000000000000080,0x000000000000800A,0x800000008000000A,
+        0x8000000080008081,0x8000000000008080,0x0000000080000001,0x8000000080008008]
+    R=[[0,36,3,41,18],[1,44,10,45,2],[62,6,43,15,61],[28,55,25,21,56],[27,20,39,8,14]]
+    M=(1<<64)-1; rot=lambda v,n:((v<<n)|(v>>(64-n)))&M if n else v
+    p=bytearray(data)+b"\x01"; p+=b"\x00"*((-len(p))%136); p[-1]|=0x80
+    S=[[0]*5 for _ in range(5)]
+    for o in range(0,len(p),136):
+        for i in range(17): S[i%5][i//5]^=int.from_bytes(p[o+8*i:o+8*i+8],"little")
+        for rc in RC:
+            C=[S[x][0]^S[x][1]^S[x][2]^S[x][3]^S[x][4] for x in range(5)]
+            D=[C[(x-1)%5]^rot(C[(x+1)%5],1) for x in range(5)]
+            S=[[S[x][y]^D[x] for y in range(5)] for x in range(5)]
+            B=[[0]*5 for _ in range(5)]
+            for x in range(5):
+                for y in range(5): B[y][(2*x+3*y)%5]=rot(S[x][y],R[x][y])
+            S=[[B[x][y]^((~B[(x+1)%5][y])&B[(x+2)%5][y]) for y in range(5)] for x in range(5)]
+            S[0][0]^=rc
+    return b"".join(S[i%5][i//5].to_bytes(8,"little") for i in range(4))
+
+def khoa_doppler(ca,pool):
+    """🆕 v7.3 (16/09). Tra ve (ten_khoa, ghi_chu) neu pool DANG DO bi khoa boi lo Doppler, None neu khong.
+    🔴 Phep thu lam sai duoc: tu tinh poolId = keccak(abi.encode(poolKey)) tu getState, DOI KHOP pool
+       dang do. Token thuoc lo Doppler ma thanh khoan chinh nam o pool khac -> KHONG cong nhan."""
+    if not (ca and pool): return None
+    sel="0x"+keccak256(b"getState(address)")[:4].hex()
+    for dc,ten in DOPPLER_KHOA.items():
+        ok,d,ly=rpc([{"jsonrpc":"2.0","id":1,"method":"eth_call",
+                      "params":[{"to":dc,"data":sel+ca.lower()[2:].rjust(64,"0")},"latest"]}])
+        if not ok or not d or "result" not in d[0]: continue
+        h=d[0]["result"][2:]; w=[h[i:i+64] for i in range(0,len(h),64)]
+        if len(w)<10: continue
+        st=int(w[4],16)
+        if st==0: continue
+        pid="0x"+keccak256(bytes.fromhex("".join(w[5:10]))).hex()
+        tt=DOPPLER_TEN[st] if st<len(DOPPLER_TEN) else str(st)
+        if pid!=pool.lower():
+            return None     # token co pool Doppler, nhung pool dang do la pool KHAC -> khong suy
+        if st in DOPPLER_KHOA_OK: return ("%s status %s"%(ten,tt),"pool khop poolId")
+        return None
+    return None
+
+def cua_nguoi_giu(ca,lan=5,pool=None):
     """ra['loi'] khac None = KHONG DO DUOC — khac han do ra so xau.
-    🆕 v5 tra them 'so_vi' de ghi vao so anh chup."""
+    🆕 v5 tra them 'so_vi' de ghi vao so anh chup.
+    🆕 v7.3: khong thay locker trong top thi hoi them khoa_doppler() cho dung pool dang do."""
     ra={"loi":None,"khoa":None,"vi_to":None,"top10":None,"so_vi":None}
     h=None
     for k in range(lan):
@@ -556,12 +611,16 @@ def cua_nguoi_giu(ca,lan=5):
         if cd=="0x" or cd.startswith("0xef0100"): nguoi.append(pct)
     if not nguoi: ra["loi"]="khong con vi nguoi nao sau khi loc ha tang"; return ra
     ra["vi_to"]=max(nguoi); ra["top10"]=sum(sorted(nguoi,reverse=True)[:10])
+    if not ra["khoa"]:
+        kd=khoa_doppler(ca,pool)
+        if kd: ra["khoa"]=(kd[0],None)
     return ra
 
 def doc_cua(r):
     if r["loi"]: return "⛔ CHUA DO DUOC: "+r["loi"]
-    k=("khoa %s giu %.2f%% cung -> KHONG rut duoc pool chinh"%r["khoa"]) if r["khoa"] \
-      else "KHONG THAY locker nao trong top -> coi nhu RUT DUOC"
+    if not r["khoa"]: k="KHONG THAY locker nao trong top -> coi nhu RUT DUOC"
+    elif r["khoa"][1] is None: k="khoa %s -> KHONG rut duoc pool chinh (doc getState)"%r["khoa"][0]
+    else: k="khoa %s giu %.2f%% cung -> KHONG rut duoc pool chinh"%r["khoa"]
     return "%s · vi to nhat %.2f%% (cua %.0f%%) · top10 %.2f%% (cua %.0f%%)"%(
         k,r["vi_to"],VI_TO_MAX,r["top10"],TOP10_MAX)
 
@@ -954,7 +1013,7 @@ def main():
                 tt="LOAI O VE 4 — GOPLUS: "+doc_goplus(c["gp"])[1].split("CHAN: ")[-1]
                 print("\n%s  %s"%(c["ma"],c["base"])); in_ba_ve(c)
                 print(doc_goplus(c["gp"])[1]); print("   %s"%tt); continue
-            r=cua_nguoi_giu(c["base"]); c["cua"]=r; time.sleep(1.0)
+            r=cua_nguoi_giu(c["base"],pool=c["pool"]); c["cua"]=r; time.sleep(1.0)
             if qua_cua_nang(r):
                 c["ve4"]=True; tt="DANH SACH THEO DOI"; theo_doi.append(c)
             elif r["loi"]:
