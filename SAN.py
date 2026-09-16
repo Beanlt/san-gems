@@ -21,6 +21,7 @@ import json,time,calendar,sys,os,urllib.request,urllib.error,statistics as st
 UA=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
 GT ="https://api.geckoterminal.com/api/v2/networks/robinhood/pools"
+GTN=GT.rsplit("/pools",1)[0]      # .../networks/robinhood — cho tokens/multi (v7.2)
 RPC="https://rpc.mainnet.chain.robinhood.com"
 BS ="https://robinhoodchain.blockscout.com"
 GOPLUS="https://api.gopluslabs.io/api/v1/token_security/4663"  # chain 4663 = Robinhood
@@ -47,6 +48,13 @@ GIO_CUA   = 20     # VE 2: trong GIO_NAM gio do phai co >=20 gio nam duoi nguong
 NUA_DAY   = 12     # VE 3: chia quang nam im lam hai nua, moi nua NUA_DAY gio.
 NEN_MIN   = 48     # can it nhat 48 cay nen 1h moi doc duoc (24 nam im + 24 de dung day)
 CUA_SO_NEN= 1000   # 41 ngay. Tran that da do: >=1.000 cay.
+
+# ---- v7.2 (16/09) — KHONG PHAI NGUONG, la do phu va do ben cua lenh goi ----
+NHO_NGAY  = 14     # SO NHO: token tung ghi DO-DEM.md trong 14 ngay ma roi khoi feed -> doc lai.
+                   #   Feed GT tran 10 trang, chi sap theo luong lenh -> con nam im roi khoi feed.
+NHO_LO    = 30     # tokens/multi nhan toi da 30 dia chi mot cu (do 16/09: 30/30 tra ve)
+LAI_LAN   = 2      # thu lai loi THOANG QUA (timeout · 5xx · dut mang) toi da 2 lan
+LAI_NGHI  = 8      # giay nghi giua hai lan thu lai loi thoang qua
 
 # ---- VE 5 — CO NGUOI VAO. Bean chot 13/09 ----
 # 🔴 CUA LA DAU, KHONG PHAI MUC. "So vi tang" = tang bat ky bao nhieu. Chua co ca nao
@@ -165,11 +173,22 @@ def get(url,timeout=20):
     except urllib.error.HTTPError as e: return False,None,"HTTP %d"%e.code
     except Exception as e: return False,None,"%s: %s"%(type(e).__name__,e)
 
-def get_lai(url):
-    """429 la LOI GOI. Nghi roi thu lai. Cam doc thanh ket qua rong."""
-    ok,j,ly=get(url)
-    if not ok and "429" in ly:
-        time.sleep(15); ok,j,ly=get(url)
+def thoang(ly):
+    """Loi THOANG QUA: goi lai la co the qua. KHAC loi that (400, 401, 404)."""
+    return any(k in ly for k in ("Timeout","timed out","HTTP 50","URLError",
+               "RemoteDisconnected","ConnectionReset","IncompleteRead"))
+
+def get_lai(url,timeout=30):
+    """429 va loi THOANG QUA la LOI GOI. Nghi roi thu lai. Cam doc thanh ket qua rong.
+    🆕 v7.2 (16/09): ban cu chi thu lai 429 -> phieu 16/09 13:29 co 6/22 con chet vi
+       timeout/504 ma khong duoc goi lai lan nao (KYLUAT.md 16.7)."""
+    ok,j,ly=get(url,timeout)
+    for k in range(LAI_LAN):
+        if ok: break
+        if "429" in ly: time.sleep(15)
+        elif thoang(ly): time.sleep(LAI_NGHI)
+        else: break
+        ok,j,ly=get(url,timeout)
     return ok,j,ly
 
 def post(url,payload,timeout=25):
@@ -210,6 +229,33 @@ def feed():
             time.sleep(GIAN)
     return pools,hong,loi
 
+def so_nho(pools,het):
+    """🆕 v7.2 (16/09) SO NHO. Feed GT tran 10 trang va chi sap theo luong lenh, nen con
+    da sap va nam im ROI KHOI FEED dung luc no bat dau hop ve 1-2-3 (do: 124/150 token
+    trong so da roi khoi feed, 47 van qua loc tho). Ham nay doc lai moi token da ghi
+    DO-DEM.md trong NHO_NGAY ngay ma feed khong con thay, lay POOL DAY NHAT cua no, nhet
+    vao cung dict pools -> loc tho, bang gia, cham ket qua chay y nhu con trong feed.
+    Tra ve (so token can doc, so pool them, danh sach loi goi)."""
+    feed_tok={(dia_chi(p.get("relationships") or {},"base_token") or "") for p in pools.values()}
+    moc=time.time()-NHO_NGAY*86400
+    can=[a for a,ds in het.items()
+         if a not in feed_tok and ds and max(x["gio"] for x in ds)>=moc]
+    them=0; loi=[]
+    for i in range(0,len(can),NHO_LO):
+        ok,j,ly=get_lai("%s/tokens/multi/%s?include=top_pools"%(GTN,",".join(can[i:i+NHO_LO])))
+        time.sleep(GIAN)
+        if not ok: loi.append("lo %d: %s"%(i//NHO_LO+1,ly)); continue
+        inc={p["id"]:p for p in (j.get("included") or []) if p.get("type")=="pool"}
+        for t in j.get("data") or []:
+            ids=[x["id"] for x in ((((t.get("relationships") or {}).get("top_pools") or {})
+                                    .get("data")) or []) if x["id"] in inc]
+            if not ids: continue
+            p=max((inc[x] for x in ids),
+                  key=lambda q:so(q["attributes"].get("reserve_in_usd")) or 0)
+            ad=p["attributes"]["address"]
+            if ad not in pools: pools[ad]=p; them+=1
+    return len(can),them,loi
+
 def loc_tho(pools):
     """Loc bang thu KHONG can goi them cu nao. None = truot."""
     ra=[]
@@ -235,6 +281,21 @@ def loc_tho(pools):
     return ra
 
 # ---------- 2. VE 1-2-3 — doc tren nen 1 gio, MOT cu cho moi con ----------
+def lap_nen(n):
+    """🆕 v7.2 (16/09). GeckoTerminal BO HAN cay nen cua gio khong co lenh (ca TRAIN: pool 22
+    gio, 3 nen, nen cuoi tre 20 gio). Khong lap thi '24 cay cuoi' la 24 GIO CO LENH, co khi
+    trai nhieu ngay -> sai NEN_MIN, ve 2, ve 3. Lap gio trong bang CLOSE truoc do, khoi luong
+    0, lap toi gio hien tai. Khong lenh = gia khong doi: khong bia them gia nao."""
+    if not n: return n
+    ra=[list(n[0])]; bay=int(time.time())//3600*3600
+    for x in n[1:]:
+        while int(ra[-1][0])+3600<int(x[0]):
+            p=ra[-1]; ra.append([int(p[0])+3600,p[4],p[4],p[4],p[4],0.0])
+        ra.append(list(x))
+    while int(ra[-1][0])+3600<=bay:
+        p=ra[-1]; ra.append([int(p[0])+3600,p[4],p[4],p[4],p[4],0.0])
+    return ra
+
 def ba_ve(c):
     """Tra ve True neu qua CA BA ve doc duoc tu nen. Ve 4 va ve 5 chay sau, o main().
     🔴 DINH = CLOSE cao nhat cua nen 1h, KHONG lay high (rau nen). Bean chot 12/09.
@@ -245,6 +306,8 @@ def ba_ve(c):
     if not ok: c["ly_nen"]="LOI GOI: "+ly; return False
     o=(((j.get("data") or {}).get("attributes") or {}).get("ohlcv_list")) or []
     n=sorted(o,key=lambda x:int(x[0]))
+    c["so_nen_that"]=len(n)       # so cay GT tra ve (chi gio co lenh)
+    n=lap_nen(n)                  # 🆕 v7.2: lap gio trong -> moi cay = mot gio that
     c["so_nen"]=len(n)
     if len(n)<NEN_MIN:
         # 🆕 v7.1 (14/09, Bean chot): con non VAN tinh dinh tu so nen it oi no co.
@@ -828,6 +891,10 @@ def main():
         print("FEED HONG — hon 8 trang loi. KHONG KET LUAN."); return
     if not pools:
         print("FEED HONG — 0 pool. LOI GOI, khong phai 'khong co du lieu'."); return
+    n_can,n_them,loi_nho=so_nho(pools,anh_het)
+    print("so nho (token da ghi so trong %d ngay, roi khoi feed): %d token -> them %d pool"%(
+          NHO_NGAY,n_can,n_them))
+    for x in loi_nho: print("   ⛔ so nho %s — LOI GOI, lo nay KHONG duoc doc"%x)
 
     gia_nay=bang_gia(pools)
     n_kq=cham_ket_qua(anh_het,gia_nay)
@@ -839,9 +906,14 @@ def main():
     if not tho:
         print("KHONG CO GI TRONG DAI"); print("[%d cu · %.0f giay]"%(CU[0],time.time()-T0)); return
 
+    for c in tho: ba_ve(c)
+    # 🆕 v7.2: LUOT VET — con loi goi duoc goi lai sau 30 giay, truoc khi ket luan gi.
+    vet=[c for c in tho if c["ly_nen"].startswith("LOI GOI")]
+    if vet:
+        print("luot vet: %d con loi goi, nghi 30 giay roi goi lai"%len(vet)); time.sleep(30)
+        for c in vet: ba_ve(c)
     doc=[]; non=[]; loi_nen=0
     for c in tho:
-        ba_ve(c)
         if c["ly_nen"].startswith("LOI GOI"): loi_nen+=1; print("   ⛔ %s: %s"%(c["ma"],c["ly_nen"]))
         elif "qua non" in c["ly_nen"]: non.append(c)
         else: doc.append(c)
@@ -864,7 +936,7 @@ def main():
     gp=goplus([(c.get("base") or "").lower() for c in cands])
     print("GoPlus: doc duoc %d/%d con"%(len(gp),len(cands)))
 
-    nguong=time.time()-GIO_KHONG_BAO_LAI*3600; theo_doi=[]; ung_vien=[]
+    nguong=time.time()-GIO_KHONG_BAO_LAI*3600; theo_doi=[]; ung_vien=[]; ung4=[]
     for c in sorted(cands,key=lambda x:-(x["dothat"] or 0)):
         kh=khu_hoi(c["dothat"],c.get("phi",0.0)) if c["dothat"] else None
         c["ve4"]=False
@@ -908,19 +980,27 @@ def main():
             ve_nam(c,anh_gan)
             if c["ve5"] is True:
                 ung_vien.append(c)
-                print("   ⇒ UNG VIEN — du ca nam ve")
+                print("   ⇒ UNG VIEN 5/5 — du ca nam ve")
                 vung_vao(c)
                 thiep(c)
                 print("   ⏰ GIO IN PHIEU: %s  — vao tien muon hon thi DO LAI truoc, xu theo so moi"%gio)
                 print("   DONG DAN VAO SO DA BAO: %s | %s | %s"%(
                     c["base"],time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime()),c["ma"]))
             else:
-                print("   ⇒ CHI THEO DOI, chua co su kien vao. KHONG phai lenh vao.")
+                # 🆕 v7.2 (Bean chot 16/09): qua 1-2-3-4 = UNG VIEN 4/5, van nam trong theo doi.
+                ung4.append(c)
+                print("   ⇒ UNG VIEN 4/5 — qua 1-2-3-4 · VE 5 %s: %s"%(
+                      "🔴 truot" if c["ve5"] is False else "⬜ chua cham",c.get("ve5_ly") or "—"))
+                print("      🔴 CHUA CO SU KIEN NGUOI VAO. So duoi day la SO DO, KHONG phai lenh vao.")
+                vung_vao(c)
+                thiep(c)
+                print("   ⏰ GIO IN PHIEU: %s  — vao tien muon hon thi DO LAI truoc, xu theo so moi"%gio)
     print("\nda ghi %d dong anh chup + %d dong ro doi chung vao %s"%(
           ghi_anh(doc,doi_chung=non),len(non),SO_ANH))
     print("danh sach theo doi (qua 1-2-3-4): %d"%len(theo_doi))
-    print("ung vien (du ca 5 ve): %d"%len(ung_vien))
-    if not ung_vien: print("KHONG CO UNG VIEN MOI")
+    print("UNG VIEN 5/5 (du ca nam ve): %d · %s"%(len(ung_vien)," ".join(c["ma"] for c in ung_vien) or "—"))
+    print("UNG VIEN 4/5 (qua 1-2-3-4, chua co nguoi vao): %d · %s"%(len(ung4)," ".join(c["ma"] for c in ung4) or "—"))
+    if not ung_vien and not ung4: print("KHONG CO UNG VIEN MOI")
     print("[%d cu · %.0f giay]"%(CU[0],time.time()-T0))
 
 main()
