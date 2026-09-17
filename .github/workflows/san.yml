@@ -1,6 +1,7 @@
 name: san-gems
-# MOT loi duy nhat, NAM VE (SCRIPT.md v6.1 · LUAT.md v12, Bean chot 13/09).
+# MOT loi duy nhat, NAM VE (SCRIPT.md v7.3 · LUAT.md v16).
 # So ve = thu tu chay: 1 rot nat · 2 nam li · 3 het tao day · 4 sach nang · 5 co nguoi vao.
+# 17/09: them buoc cuoi BAO IPHONE qua ntfy. Ten kenh nam trong secret NTFY_TOPIC, KHONG ghi vao file.
 
 on:
   schedule:
@@ -40,7 +41,7 @@ jobs:
             exit 0
           fi
           git commit -m "quet $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          # 🔴 THU LAI BA LAN. Ca that 13/09 luot #9: GitHub tra
+          # THU LAI BA LAN. Ca that 13/09 luot #9: GitHub tra
           #    'remote: fatal error in commit_refs' -> '! [remote rejected] main -> main'.
           #    Loi PHIA MAY CHU, thoang qua. Commit da tao nhung phieu 08:51 mat luon.
           for i in 1 2 3; do
@@ -52,5 +53,41 @@ jobs:
             sleep 20
             git pull --rebase --autostash origin main || true
           done
-          echo "🔴 DAY HONG CA BA LAN — phieu luot nay khong len duoc repo"
+          echo "DAY HONG CA BA LAN — phieu luot nay khong len duoc repo"
           exit 1
+
+      # 17/09 BAO IPHONE. Chi bao ba truong hop:
+      #   (1) co con 5/5  (2) Bean bam chay tay -> tin thu  (3) luot quet hong.
+      #   Con 4/5 KHONG bao, 0 ung vien KHONG bao.
+      #   Luot bi cat vi qua 25 phut thi buoc nay KHONG chay -> khong co tin bao hong.
+      - name: Bao iPhone qua ntfy
+        if: always()
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          TRANG_THAI: ${{ job.status }}
+          KIEU_CHAY: ${{ github.event_name }}
+          LINK_PHIEU: https://github.com/${{ github.repository }}/blob/main/MOI-NHAT.md
+          LINK_LUOT: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$NTFY_TOPIC" ]; then
+            echo "chua cai secret NTFY_TOPIC — bo qua, khong bao"
+            exit 0
+          fi
+          gui() {
+            curl -s --max-time 20 \
+              -H "Title: $1" -H "Tags: $2" -H "Click: $3" \
+              -d "$4" "https://ntfy.sh/$NTFY_TOPIC" > /dev/null \
+              && echo "da gui: $1" || echo "GUI NTFY HONG: $1"
+          }
+          SO=$(sed -n 's/^UNG VIEN 5\/5 (du ca nam ve): \([0-9]*\).*/\1/p' phieu.txt 2>/dev/null | head -n1)
+          SO=${SO:-0}
+          if [ "$SO" -gt 0 ]; then
+            CHI_TIET=$(awk '/^[^ ].*[ ]0x[0-9a-fA-F]+$/{ma=$1} /so vi .*->/{sv=$0} /UNG VIEN 5\/5 — du ca nam ve/{sub(/^ +/,"",sv); print ma ": " sv}' phieu.txt)
+            gui "SAN GEMS: $SO con 5/5" "rotating_light" "$LINK_PHIEU" "$CHI_TIET
+          Do lai truoc khi vao tien. Chi bam link GitHub."
+          elif [ "$KIEU_CHAY" = "workflow_dispatch" ]; then
+            gui "SAN GEMS: luot tay xong, 0 con 5/5" "white_check_mark" "$LINK_PHIEU" "Tin thu: ntfy da thong."
+          fi
+          if [ "$TRANG_THAI" != "success" ]; then
+            gui "SAN GEMS: luot quet HONG" "warning" "$LINK_LUOT" "Trang thai: $TRANG_THAI. Mo luot nay xem buoc nao do."
+          fi
