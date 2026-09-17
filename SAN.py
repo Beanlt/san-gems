@@ -674,6 +674,11 @@ def doc_anh_cu(path=SO_ANH):
             # 🔴 Con non KHONG duoc lam moc cho VE 5: no chua tung qua ba ve gia,
             #   so hai anh cua no la so hai tap khac nhau (KYLUAT.md muc 4).
             if dc: continue
+            # 🆕 v7.5 (17/09, Bean chot, LUAT.md viec treo #22): CHI anh CO SO VI moi lam moc ve 5.
+            #   Luot con nay truot ve 1-3 thi ve 4 khong chay -> o so vi trong. Truoc day anh do van
+            #   thanh 'gan nhat' -> luot sau in 'thieu so vi' va BO LO cham ve 5
+            #   (ca CLARUS 17/09 07:58 · Jacob, TOOLS 17/09 13:46).
+            if anh["vi"] is None: continue
             if a not in gan or g>gan[a]["gio"]: gan[a]=anh
         except Exception: pass
     return gan,het
@@ -768,7 +773,7 @@ def ve_nam(c,gan):
     c["ve5"]=None; c["ve5_ly"]=""
     a=(c.get("base") or "").lower()
     if a not in gan:
-        c["ve5_ly"]="CHUA CO ANH CU — luot dau cua con nay, ghi lai de lan sau so"
+        c["ve5_ly"]="CHUA CO ANH CU CO SO VI — luot dau, hoac cac luot truoc con nay truot ve 1-3"
         print("   VE 5 ⬜ co nguoi vao: %s"%c["ve5_ly"]); return
     anh=gan[a]; cach=(time.time()-anh["gio"])/3600
     r=c.get("cua") or {}
