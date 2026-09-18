@@ -11,111 +11,68 @@ NGUONG DANG CHAY · MOT LOI DUY NHAT, NAM VE (Bean chot 13/09 — so ve = thu tu
    KHONG CO MOC BAN. Qua 1-2-3-4 = DANH SACH THEO DOI, chua phai ung vien.
    SO MO TA, KHONG chan ai: khoi luong 1h/nen · nhip lenh (LUAT.md 2.5 va 7.4)
 
-PHIEU · 2026-09-18 07:23 UTC
-feed: 276 pool doc duoc · 0 trang loi
-so nho (token da ghi so trong 14 ngay, roi khoi feed): 157 token -> them 156 pool
-cham ket qua anh cu (moc 6/24/72 gio): 180 dong moi
-qua loc tho (mc $50,000-$1,500,000 · reserve>=$40,000): 91
-doc duoc nen: 62 · pool qua non (<48 nen): 29 · loi goi: 0
-qua VE 1+2+3 (hinh dang gia): 8
-   luot vet: 5 pool chua thay Swap trong 6.000 khoi -> nhin lui 60,000 khoi
-GoPlus: doc duoc 1/8 con
-
-NAVI  0x3d7d94671b40c6f3d5cfa0c9e63f8042abb509fe
-   VE 1 ✅ da rot nat : gia $0.000357761 = 13.4% dinh  (cua <=25%) · dinh $0.00267629 · 128h tu dinh
-   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000669073 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000345724 / day 12h truoc $0.000340347
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = ? nen · $0 / nen $19
-   NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 — · h24 1.60   -> —
-      vi mua/vi ban h1 — · lenh tren moi vi —
-      🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 🔴 sach nang: doi ung that $328,667  (GeckoTerminal bao tong pool $386,878) · phi pool ? (GT khong khai)
-   GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $357,760 · cap FFAI 0.9% · vol24 $23,357 · pool 0xd06284b9692c41f95436e80de3032cacc669cebe088b1a4d934caa0bd0697655
-   LOAI O VE 4 — NGUOI GIU: KHONG THAY locker nao trong top -> coi nhu RUT DUOC · vi to nhat 1.08% (cua 5%) · top10 6.05% (cua 25%)
+PHIEU · 2026-09-18 12:57 UTC
+feed: 278 pool doc duoc · 0 trang loi
+so nho (token da ghi so trong 14 ngay, roi khoi feed): 160 token -> them 159 pool
+cham ket qua anh cu (moc 6/24/72 gio): 112 dong moi
+qua loc tho (mc $50,000-$1,500,000 · reserve>=$40,000): 85
+doc duoc nen: 59 · pool qua non (<48 nen): 26 · loi goi: 0
+qua VE 1+2+3 (hinh dang gia): 9
+   luot vet: 2 pool chua thay Swap trong 6.000 khoi -> nhin lui 60,000 khoi
+GoPlus: doc duoc 1/9 con
 
 ZFORGE  0xb6a906d2d95e862cf4fd43b9e30162aee19eed8d
-   VE 1 ✅ da rot nat : gia $0.00120959 = 8.4% dinh  (cua <=25%) · dinh $0.014332001 · 172h tu dinh
+   VE 1 ✅ da rot nat : gia $0.001221207 = 8.5% dinh  (cua <=25%) · dinh $0.014332001 · 178h tu dinh
    VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.003583 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000261873 / day 12h truoc $0.000255247
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 3.3x nen · $361,138 / nen $109,851
+   VE 3 ✅ het tao day: day 12h sau $0.000777631 / day 12h truoc $0.000256554
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.0x nen · $15,030 / nen $524,398
    NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 2.75 · h24 2.08   -> NHIEU LENH NHO BAT DAY
-      vi mua/vi ban h1 2.79 · lenh tren moi vi 1.5
+      mua/ban  h1 3.00 · h24 2.36   -> NHIEU LENH NHO BAT DAY
+      vi mua/vi ban h1 2.14 · lenh tren moi vi 1.7
       🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
    GOPLUS: ma DONG 🔴 · thue: khong khai
    🔴 GOPLUS CHAN: is_open_source
    LOAI O VE 4 — GOPLUS: is_open_source
 
-JACKET  0x395c45c2e5170ab9d020010dc13214ab73051e18
-   VE 1 ✅ da rot nat : gia $0.000161655 = 12.4% dinh  (cua <=25%) · dinh $0.001301661 · 1337h tu dinh
-   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000325415 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000156184 / day 12h truoc $0.000127391
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 2.2x nen · $593 / nen $264
+SHRUB  0x5d9144d2d017386519a7134fcc7f1e4ba22f920c
+   VE 1 ✅ da rot nat : gia $0.000277909 = 0.2% dinh  (cua <=25%) · dinh $0.135006829 · 330h tu dinh
+   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.033751707 (cua >=20)
+   VE 3 ✅ het tao day: day 12h sau $0.000219434 / day 12h truoc $0.000065932
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.1x nen · $3,988 / nen $79,452
    NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 0.75 · h24 0.60   -> CAN
-      vi mua/vi ban h1 0.75 · lenh tren moi vi 1.0
+      mua/ban  h1 1.90 · h24 1.68   -> NHIEU LENH NHO BAT DAY
+      vi mua/vi ban h1 1.54 · lenh tren moi vi 1.2
       🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 ✅ sach nang: doi ung that $57,177  (GeckoTerminal bao tong pool $140,897) · phi pool ? (GT khong khai)
+   VE 4 🔴 sach nang: doi ung that $58,390  (GeckoTerminal bao tong pool $117,933) · phi pool ? (GT khong khai)
    GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $159,430 · cap NVDA · vol24 $37,386 · pool 0xcceff2dc06cde6fa18ebc0d7888797a390d2285acc422e2ba5855b2c34dd6903
-   DANH SACH THEO DOI
-   khoa DopplerHookInitializer status Locked -> KHONG rut duoc pool chinh (doc getState) · vi to nhat 3.26% (cua 5%) · top10 20.10% (cua 25%)
-   khu hoi $250: 1.75% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
-   VE 5 — co nguoi vao (so voi anh chup cach 7.0 gio):
-      so vi   1,199 -> 1,192  (-0.6% · -0.08%/gio) 🔴 nguoi ta dang bo di
-      doi ung $59,214 -> $57,177 (-3.4%) · THUOC 2 = 1.00 khong ai dong vao
-      VE 5 🔴 TRUOT  (so vi -0.6% · thuoc 2 1.00)
-   ⇒ UNG VIEN 4/5 — qua 1-2-3-4 · VE 5 🔴 truot: so vi -0.6% · thuoc 2 1.00
-      🔴 CHUA CO SU KIEN NGUOI VAO. So duoi day la SO DO, KHONG phai lenh vao.
-   VUNG DUNG DUOC: $0.000019778 -> $0.000325415
-      tran xep $0.000325415 = 25% dinh · san phi $0.000019778 = noi khu hoi cham 5%
-      ✅ gia nay $0.000161655 (12.4% dinh) -> GIA DAT LENH: $0.000163069
-         = gia nay + 0.874% truot chieu MUA (khu hoi hai chieu 1.749%, chia doi)
-      da hoi 0% quang day-sau-dinh -> dinh (0=day, 100=dinh)
-   ten day du: Leather Jacket
-   web: https://jacketrobinhood.lol
-   X:   https://x.com/jensenhuang
-   Y TUONG: ⬜ CHUA KIEM — mo web o tren, MO HET CAC TRANG (ca /treasury, /docs...),
-            tu ghi MOT cau. Cam doan tu cai ten, cam dung o trang chu (ca FAB 09/09).
-   DANH GIA Y TUONG — bat buoc dien du 3 o, xem LUAT.md muc 4.5:
-      bac:      [LOP VO / GHEP LAI CO CHO MOI / TU LAM HA TANG]
-      chep cua: [ten cai goc — hoac 'chua thay cai goc', cam bo trong]
-      phep thu: [cai no khai kiem duoc tren chuoi bang gi]
-      🔴 bac KHONG doi co lenh, KHONG doi cua, KHONG doi gi het.
-   🔴 4 DIA CHI CUNG MA tren chuoi nay (8 pool). To nhat 0x395c45c2e5170aB9d020010DC13214ab73051E18 von hoa $184,817
-      /search cat o 50 -> day la SAN. /search tra VON HOA LON NHAT trong moi pool
-      -> pool bui thoi so len (ca CRUMBS: $4.020.453 vs pool chinh $324.227).
-      🔴 SO DIA CHI DU 42 KY TU (ca STREAM `f94c` · CRUMBS `9136` · MARIO `420c`).
-   ⏰ GIO IN PHIEU: 2026-09-18 07:23 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   von hoa $283,414 · cap WETH · vol24 $1,970,198 · pool 0x4a6a85252a6f6b383a5f747259ee157e65ff1307
+   LOAI O VE 4 — NGUOI GIU: KHONG THAY locker nao trong top -> coi nhu RUT DUOC · vi to nhat 45.06% (cua 5%) · top10 77.80% (cua 25%)
 
 CYBERINU  0xc2703284e399a9778dce9734e69dd6ab0dc71e18
-   VE 1 ✅ da rot nat : gia $0.000066624 = 14.8% dinh  (cua <=25%) · dinh $0.000449406 · 81h tu dinh
+   VE 1 ✅ da rot nat : gia $0.000067946 = 15.1% dinh  (cua <=25%) · dinh $0.000449406 · 87h tu dinh
    VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000112351 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000060471 / day 12h truoc $0.000046416
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 1.0x nen · $1,104 / nen $1,110
+   VE 3 ✅ het tao day: day 12h sau $0.000063877 / day 12h truoc $0.000060471
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.1x nen · $50 / nen $644
    NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 1.25 · h24 0.87   -> CAN
-      vi mua/vi ban h1 1.00 · lenh tren moi vi 1.8
+      mua/ban  h1 1.50 · h24 0.86   -> NHIEU LENH NHO BAT DAY
+      vi mua/vi ban h1 1.00 · lenh tren moi vi 1.5
       🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 ✅ sach nang: doi ung that $37,418  (GeckoTerminal bao tong pool $66,988) · phi pool ? (GT khong khai)
+   VE 4 ✅ sach nang: doi ung that $37,614  (GeckoTerminal bao tong pool $67,158) · phi pool ? (GT khong khai)
    GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $66,623 · cap TSLA · vol24 $86,593 · pool 0xca7b1b5f2210d9b4398fdfdd82ca55d8669f47129380cda3eb3a63436e0d2d92
+   von hoa $67,692 · cap TSLA · vol24 $85,180 · pool 0xca7b1b5f2210d9b4398fdfdd82ca55d8669f47129380cda3eb3a63436e0d2d92
    DANH SACH THEO DOI
    khoa DopplerHookInitializer status Locked -> KHONG rut duoc pool chinh (doc getState) · vi to nhat 2.65% (cua 5%) · top10 18.91% (cua 25%)
-   khu hoi $250: 2.67% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
-   VE 5 — co nguoi vao (so voi anh chup cach 7.0 gio):
-      so vi   247 -> 245  (-0.8% · -0.12%/gio) 🔴 nguoi ta dang bo di
-      doi ung $36,227 -> $37,418 (+3.3%) · THUOC 2 = 1.00 khong ai dong vao
-      VE 5 🔴 TRUOT  (so vi -0.8% · thuoc 2 1.00)
-   ⇒ UNG VIEN 4/5 — qua 1-2-3-4 · VE 5 🔴 truot: so vi -0.8% · thuoc 2 1.00
-      🔴 CHUA CO SU KIEN NGUOI VAO. So duoi day la SO DO, KHONG phai lenh vao.
-   VUNG DUNG DUOC: $0.000019033 -> $0.000112351
-      tran xep $0.000112351 = 25% dinh · san phi $0.000019033 = noi khu hoi cham 5%
-      ✅ gia nay $0.000066624 (14.8% dinh) -> GIA DAT LENH: $0.000067514
-         = gia nay + 1.336% truot chieu MUA (khu hoi hai chieu 2.672%, chia doi)
-      da hoi 2% quang day-sau-dinh -> dinh (0=day, 100=dinh)
+   khu hoi $250: 2.66% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
+   VE 5 — co nguoi vao (so voi anh chup cach 5.7 gio):
+      so vi   245 -> 247  (+0.8% · +0.14%/gio) ✅ co nguoi vao
+      doi ung $37,418 -> $37,614 (+0.5%) · THUOC 2 = 1.00 khong ai dong vao
+      VE 5 ✅ DAT  (so vi +0.8% · thuoc 2 1.00)
+   ⇒ UNG VIEN 5/5 — du ca nam ve
+   VUNG DUNG DUOC: $0.00001921 -> $0.000112351
+      tran xep $0.000112351 = 25% dinh · san phi $0.00001921 = noi khu hoi cham 5%
+      ✅ gia nay $0.000067946 (15.1% dinh) -> GIA DAT LENH: $0.000068849
+         = gia nay + 1.329% truot chieu MUA (khu hoi hai chieu 2.659%, chia doi)
+      da hoi 1% quang day-sau-dinh -> dinh (0=day, 100=dinh)
    ten day du: Cyber Inu
    web: https://cyberinu.com/
    X:   https://x.com/cyberinutsla
@@ -127,32 +84,33 @@ CYBERINU  0xc2703284e399a9778dce9734e69dd6ab0dc71e18
       phep thu: [cai no khai kiem duoc tren chuoi bang gi]
       🔴 bac KHONG doi co lenh, KHONG doi cua, KHONG doi gi het.
    dia chi cung ma tren chuoi nay: 1
-   ⏰ GIO IN PHIEU: 2026-09-18 07:23 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   ⏰ GIO IN PHIEU: 2026-09-18 12:57 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   DONG DAN VAO SO DA BAO: 0xc2703284e399a9778dce9734e69dd6ab0dc71e18 | 2026-09-18T13:20:03Z | CYBERINU
 
-MUSE  0x941cf3f6b5cbfcfdb5402cf8a8ab3903df9c1e18
-   VE 1 ✅ da rot nat : gia $0.000059417 = 15.7% dinh  (cua <=25%) · dinh $0.000377592 · 84h tu dinh
-   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000094398 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000058557 / day 12h truoc $0.000057114
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.6x nen · $313 / nen $512
+AGRIPPA  0x82ef09793c78f7cb6a2b6696fcdca8e1c3581e18
+   VE 1 ✅ da rot nat : gia $0.000054762 = 21.4% dinh  (cua <=25%) · dinh $0.000256055 · 31h tu dinh
+   VE 2 ✅ da nam li  : 20/24 gio nam duoi $0.000064014 (cua >=20)
+   VE 3 ✅ het tao day: day 12h sau $0.000054586 / day 12h truoc $0.000048891
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.0x nen · $18 / nen $1,516
    NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 1.40 · h24 1.33   -> CAN
+      mua/ban  h1 1.33 · h24 0.98   -> CAN
       vi mua/vi ban h1 1.00 · lenh tren moi vi 1.5
       🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 ✅ sach nang: doi ung that $37,012  (GeckoTerminal bao tong pool $74,130) · phi pool ? (GT khong khai)
+   VE 4 ✅ sach nang: doi ung that $34,816  (GeckoTerminal bao tong pool $60,353) · phi pool ? (GT khong khai)
    GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $59,417 · cap META · vol24 $29,027 · pool 0xd4fdad28071449b235057c28c388881a7402df34482440ea57cdc157bd4aa6c5
+   von hoa $55,055 · cap META · vol24 $123,665 · pool 0xb3afa4acad527eca0332d07366222eb237b3b1aa71f2f10e0cfbd93dff6a339f
    DANH SACH THEO DOI
-   khoa DopplerHookInitializer status Locked -> KHONG rut duoc pool chinh (doc getState) · vi to nhat 2.69% (cua 5%) · top10 14.87% (cua 25%)
-   khu hoi $250: 2.70% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
+   khoa DopplerHookInitializer status Locked -> KHONG rut duoc pool chinh (doc getState) · vi to nhat 3.01% (cua 5%) · top10 16.55% (cua 25%)
+   khu hoi $250: 2.87% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
    VE 5 ⬜ co nguoi vao: CHUA CO ANH CU CO SO VI — luot dau, hoac cac luot truoc con nay truot ve 1-3
    ⇒ UNG VIEN 4/5 — qua 1-2-3-4 · VE 5 ⬜ chua cham: CHUA CO ANH CU CO SO VI — luot dau, hoac cac luot truoc con nay truot ve 1-3
       🔴 CHUA CO SU KIEN NGUOI VAO. So duoi day la SO DO, KHONG phai lenh vao.
-   VUNG DUNG DUOC: $0.000017349 -> $0.000094398
-      tran xep $0.000094398 = 25% dinh · san phi $0.000017349 = noi khu hoi cham 5%
-      ✅ gia nay $0.000059417 (15.7% dinh) -> GIA DAT LENH: $0.00006022
-         = gia nay + 1.351% truot chieu MUA (khu hoi hai chieu 2.702%, chia doi)
+   VUNG DUNG DUOC: $0.00001807 -> $0.000064014
+      tran xep $0.000064014 = 25% dinh · san phi $0.00001807 = noi khu hoi cham 5%
+      ✅ gia nay $0.000054762 (21.4% dinh) -> GIA DAT LENH: $0.000055549
+         = gia nay + 1.436% truot chieu MUA (khu hoi hai chieu 2.872%, chia doi)
       da hoi 0% quang day-sau-dinh -> dinh (0=day, 100=dinh)
-   ten day du: MUSE
+   ten day du: AGRIPPA
    web: khong khai
    X:   khong khai
    Y TUONG: ⬜ CHUA KIEM — mo web o tren, MO HET CAC TRANG (ca /treasury, /docs...),
@@ -162,55 +120,40 @@ MUSE  0x941cf3f6b5cbfcfdb5402cf8a8ab3903df9c1e18
       chep cua: [ten cai goc — hoac 'chua thay cai goc', cam bo trong]
       phep thu: [cai no khai kiem duoc tren chuoi bang gi]
       🔴 bac KHONG doi co lenh, KHONG doi cua, KHONG doi gi het.
-   🔴 13 DIA CHI CUNG MA tren chuoi nay (13 pool). To nhat 0xd41d7881c8A47205C95ccE79fcA4619ac8307E26 von hoa $107,628
+   🔴 7 DIA CHI CUNG MA tren chuoi nay (13 pool). To nhat 0x82eF09793c78f7CB6a2B6696fcdCA8E1c3581e18 von hoa $218,661
       /search cat o 50 -> day la SAN. /search tra VON HOA LON NHAT trong moi pool
       -> pool bui thoi so len (ca CRUMBS: $4.020.453 vs pool chinh $324.227).
       🔴 SO DIA CHI DU 42 KY TU (ca STREAM `f94c` · CRUMBS `9136` · MARIO `420c`).
-   ⏰ GIO IN PHIEU: 2026-09-18 07:23 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   ⏰ GIO IN PHIEU: 2026-09-18 12:57 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
 
-DTF  0xee5576fa1bcaa380e591d01245f406f3f384eb01
-   VE 1 ✅ da rot nat : gia $0.00042478 = 3.1% dinh  (cua <=25%) · dinh $0.013694685 · 261h tu dinh
-   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.003423671 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000299578 / day 12h truoc $0.000266439
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 2.7x nen · $6,689 / nen $2,470
+TOOLS  0x4b7d1e5ec6889e63e70d39561edf925095dbed88
+   VE 1 ✅ da rot nat : gia $0.000378037 = 21.5% dinh  (cua <=25%) · dinh $0.00175634 · 106h tu dinh
+   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000439085 (cua >=20)
+   VE 3 ✅ het tao day: day 12h sau $0.000234407 / day 12h truoc $0.000208379
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.2x nen · $243 / nen $1,567
    NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 0.95 · h24 0.95   -> CAN
-      vi mua/vi ban h1 0.50 · lenh tren moi vi 61.7  (cao = may chay vong)
+      mua/ban  h1 2.00 · h24 0.88   -> NHIEU LENH NHO BAT DAY
+      vi mua/vi ban h1 4.33 · lenh tren moi vi 1.3
       🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 🔴 sach nang: doi ung that $31,241  (GeckoTerminal bao tong pool $124,472) · phi pool ? (GT khong khai)
+   VE 4 ✅ sach nang: doi ung that $27,452  (GeckoTerminal bao tong pool $57,786) · phi pool ? (GT khong khai)
    GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $421,167 · cap WETH · vol24 $289,957 · pool 0xbc58bfe115b23f22d2e97ded5c791ebf6db3d3f510f412908c511da6dc8cb4ee
-   LOAI O VE 4 — NGUOI GIU: khoa PonsV2LaunchLocker giu 8.16% cung -> KHONG rut duoc pool chinh · vi to nhat 6.72% (cua 5%) · top10 23.57% (cua 25%)
-
-BLAST  0x724a163f0081fa1771590dda9b55edde2c5b823a
-   VE 1 ✅ da rot nat : gia $0.00021993 = 6.1% dinh  (cua <=25%) · dinh $0.003578535 · 114h tu dinh
-   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000894634 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000185894 / day 12h truoc $0.000178307
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.1x nen · $410 / nen $3,108
-   NHIP LENH (mo ta, KHONG phai cua chan)
-      mua/ban  h1 0.76 · h24 1.12   -> CAN
-      vi mua/vi ban h1 0.64 · lenh tren moi vi 1.7
-      🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 ✅ sach nang: doi ung that $21,519  (GeckoTerminal bao tong pool $43,418) · phi pool ? (GT khong khai)
-   GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $217,214 · cap WETH · vol24 $113,584 · pool 0x4c25338827fb1227ee9d021320f8c282d613ecf8180cbfdf3e27e5a764c978ff
+   von hoa $384,473 · cap WETH · vol24 $111,169 · pool 0xd4948bc5cba2766bf51b669a8b27bd66e108d69fc8e19a43cc44db8336742dc4
    DANH SACH THEO DOI
-   khoa PonsV2LaunchLocker giu 12.39% cung -> KHONG rut duoc pool chinh · vi to nhat 3.76% (cua 5%) · top10 17.82% (cua 25%)
-   khu hoi $250: 4.65% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
-   VE 5 — co nguoi vao (so voi anh chup cach 7.0 gio):
-      so vi   2,456 -> 2,437  (-0.8% · -0.11%/gio) 🔴 nguoi ta dang bo di
-      doi ung $24,439 -> $21,519 (-11.9%) · THUOC 2 = 1.00 khong ai dong vao
-      VE 5 🔴 TRUOT  (so vi -0.8% · thuoc 2 1.00)
-   ⇒ UNG VIEN 4/5 — qua 1-2-3-4 · VE 5 🔴 truot: so vi -0.8% · thuoc 2 1.00
-      🔴 CHUA CO SU KIEN NGUOI VAO. So duoi day la SO DO, KHONG phai lenh vao.
-   VUNG DUNG DUOC: $0.000189973 -> $0.000894634
-      tran xep $0.000894634 = 25% dinh · san phi $0.000189973 = noi khu hoi cham 5%
-      ✅ gia nay $0.00021993 (6.1% dinh) -> GIA DAT LENH: $0.00022504
-         = gia nay + 2.324% truot chieu MUA (khu hoi hai chieu 4.647%, chia doi)
-      da hoi 1% quang day-sau-dinh -> dinh (0=day, 100=dinh)
-   ten day du: BLAST
-   web: https://www.experimentblast.com/
-   X:   https://t.me/experimentblast
+   khoa PonsV2LaunchLocker giu 8.16% cung -> KHONG rut duoc pool chinh · vi to nhat 2.31% (cua 5%) · top10 17.30% (cua 25%)
+   khu hoi $250: 3.64% / cua 5.00%  (truot gia hai chieu + phi pool ? (GT khong khai))
+   VE 5 — co nguoi vao (so voi anh chup cach 22.2 gio):
+      so vi   1,662 -> 1,684  (+1.3% · +0.06%/gio) ✅ co nguoi vao
+      doi ung $21,416 -> $27,452 (+28.2%) · THUOC 2 = 0.98 khong ai dong vao
+      VE 5 ✅ DAT  (so vi +1.3% · thuoc 2 0.98)
+   ⇒ UNG VIEN 5/5 — du ca nam ve
+   VUNG DUNG DUOC: $0.000200639 -> $0.000439085
+      tran xep $0.000439085 = 25% dinh · san phi $0.000200639 = noi khu hoi cham 5%
+      ✅ gia nay $0.000378037 (21.5% dinh) -> GIA DAT LENH: $0.000384922
+         = gia nay + 1.821% truot chieu MUA (khu hoi hai chieu 3.643%, chia doi)
+      da hoi 9% quang day-sau-dinh -> dinh (0=day, 100=dinh)
+   ten day du: RHTools
+   web: https://www.rhtools.xyz/
+   X:   https://x.com/RHToolsXYZ
    Y TUONG: ⬜ CHUA KIEM — mo web o tren, MO HET CAC TRANG (ca /treasury, /docs...),
             tu ghi MOT cau. Cam doan tu cai ten, cam dung o trang chu (ca FAB 09/09).
    DANH GIA Y TUONG — bat buoc dien du 3 o, xem LUAT.md muc 4.5:
@@ -219,24 +162,67 @@ BLAST  0x724a163f0081fa1771590dda9b55edde2c5b823a
       phep thu: [cai no khai kiem duoc tren chuoi bang gi]
       🔴 bac KHONG doi co lenh, KHONG doi cua, KHONG doi gi het.
    dia chi cung ma tren chuoi nay: 1
-   ⏰ GIO IN PHIEU: 2026-09-18 07:23 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   ⏰ GIO IN PHIEU: 2026-09-18 12:57 UTC  — vao tien muon hon thi DO LAI truoc, xu theo so moi
+   DONG DAN VAO SO DA BAO: 0x4b7d1e5ec6889e63e70d39561edf925095dbed88 | 2026-09-18T13:20:08Z | TOOLS
+
+LPAD  0x3c68382e757193f6ddd12a72dcf0adf93c961769
+   VE 1 ✅ da rot nat : gia $0.000169567 = 9.7% dinh  (cua <=25%) · dinh $0.001751472 · 166h tu dinh
+   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000437868 (cua >=20)
+   VE 3 ✅ het tao day: day 12h sau $0.000139726 / day 12h truoc $0.000132818
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = 0.4x nen · $1,276 / nen $3,631
+   NHIP LENH (mo ta, KHONG phai cua chan)
+      mua/ban  h1 1.15 · h24 0.84   -> CAN
+      vi mua/vi ban h1 1.13 · lenh tren moi vi 1.5
+      🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
+   VE 4 🔴 sach nang: doi ung that $20,223  (GeckoTerminal bao tong pool $42,114) · phi pool ? (GT khong khai)
+   GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
+   von hoa $159,155 · cap WETH 1% · vol24 $95,597 · pool 0xba25e3dd3a9f70d2272d691d6f2dde5c5534ad3d
+   LOAI O VE 4 — NGUOI GIU: KHONG THAY locker nao trong top -> coi nhu RUT DUOC · vi to nhat 2.42% (cua 5%) · top10 15.83% (cua 25%)
+
+HOODS  0x48874ad21dbd7512c0edc123232898c6ecf34d7e
+   VE 1 ✅ da rot nat : gia $0.001113604 = 23.9% dinh  (cua <=25%) · dinh $0.004661408 · 90h tu dinh
+   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.001165352 (cua >=20)
+   VE 3 ✅ het tao day: day 12h sau $0.000993891 / day 12h truoc $0.000978806
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = ? nen · $0 / nen $34
+   NHIP LENH (mo ta, KHONG phai cua chan)
+      mua/ban  h1 — · h24 1.14   -> —
+      vi mua/vi ban h1 — · lenh tren moi vi 1.0
+      🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
+   VE 4 🔴 sach nang: doi ung that $20,091  (GeckoTerminal bao tong pool $40,090) · phi pool ? (GT khong khai)
+   GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
+   von hoa $111,360 · cap WETH · vol24 $1,783 · pool 0xd0d9efdfcdd07a5d19adbda97ed29f965d193821
+   LOAI O VE 4 — NGUOI GIU: KHONG THAY locker nao trong top -> coi nhu RUT DUOC · vi to nhat 0.64% (cua 5%) · top10 6.27% (cua 25%)
 
 HUMANITY  0xe098e641c2cb1d8209d1deddb970f193831e1e18
-   VE 1 ✅ da rot nat : gia $0.000051876 = 10.4% dinh  (cua <=25%) · dinh $0.000498559 · 99h tu dinh
+   VE 1 ✅ da rot nat : gia $0.000051588 = 10.3% dinh  (cua <=25%) · dinh $0.000498559 · 105h tu dinh
    VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.00012464 (cua >=20)
-   VE 3 ✅ het tao day: day 12h sau $0.000051876 / day 12h truoc $0.000038383
-   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = ? nen · $0 / nen $31
+   VE 3 ✅ het tao day: day 12h sau $0.000051184 / day 12h truoc $0.000038383
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = ? nen · $0 / nen $13
    NHIP LENH (mo ta, KHONG phai cua chan)
       mua/ban  h1 — · h24 0.45   -> —
       vi mua/vi ban h1 — · lenh tren moi vi —
       🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
-   VE 4 ⬜ sach nang: doi ung that CHUA DO DUOC  (GeckoTerminal bao tong pool $52,149) · phi pool ? (GT khong khai)
+   VE 4 🔴 sach nang: doi ung that $13,963  (GeckoTerminal bao tong pool $51,665) · phi pool ? (GT khong khai)
    GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
-   von hoa $51,876 · cap OPENAIx1L · vol24 $9,325 · pool 0x9306cc2b88e17d05202cefa532d535f4d816b1dcb7b5a68576bf7651240d54f0
+   von hoa $51,588 · cap OPENAIx1L · vol24 $7,594 · pool 0x9306cc2b88e17d05202cefa532d535f4d816b1dcb7b5a68576bf7651240d54f0
+   LOAI O VE 4 — PHI: khu hoi $250 = 7.16% > cua 5.00%  (doi ung $13,963 · phi pool ? (GT khong khai))
+
+NAVI  0x3d7d94671b40c6f3d5cfa0c9e63f8042abb509fe
+   VE 1 ✅ da rot nat : gia $0.000360389 = 13.5% dinh  (cua <=25%) · dinh $0.00267629 · 134h tu dinh
+   VE 2 ✅ da nam li  : 24/24 gio nam duoi $0.000669073 (cua >=20)
+   VE 3 ✅ het tao day: day 12h sau $0.00034951 / day 12h truoc $0.000345724
+   KHOI LUONG (mo ta, KHONG phai cua chan): 1h = ? nen · $0 / nen $0
+   NHIP LENH (mo ta, KHONG phai cua chan)
+      mua/ban  h1 — · h24 1.73   -> —
+      vi mua/vi ban h1 — · lenh tren moi vi —
+      🔴 Ty le cao KHONG co nghia gia se len — xem LUAT.md 7.4
+   VE 4 ⬜ sach nang: doi ung that CHUA DO DUOC  (GeckoTerminal bao tong pool $389,447) · phi pool ? (GT khong khai)
+   GOPLUS: ⛔ khong co du lieu con nay — KHONG BIET, khong phai sach
+   von hoa $360,389 · cap FFAI 0.9% · vol24 $24,203 · pool 0xd06284b9692c41f95436e80de3032cacc669cebe088b1a4d934caa0bd0697655
    ⛔ LOAI O VE 4: chua do duoc doi ung (khong co Swap trong 60,000 khoi gan nhat (da chay luot vet))
 
-da ghi 62 dong anh chup + 29 dong ro doi chung vao DO-DEM.md
-danh sach theo doi (qua 1-2-3-4): 4
-UNG VIEN 5/5 (du ca nam ve): 0 · —
-UNG VIEN 4/5 (qua 1-2-3-4, chua co nguoi vao): 4 · JACKET CYBERINU MUSE BLAST
-[179 cu · 871 giay]
+da ghi 59 dong anh chup + 26 dong ro doi chung vao DO-DEM.md
+danh sach theo doi (qua 1-2-3-4): 3
+UNG VIEN 5/5 (du ca nam ve): 2 · CYBERINU TOOLS
+UNG VIEN 4/5 (qua 1-2-3-4, chua co nguoi vao): 1 · AGRIPPA
+[203 cu · 1351 giay]
