@@ -3,6 +3,13 @@ name: san-gems
 # So ve = thu tu chay: 1 rot nat · 2 nam li · 3 het tao day · 4 sach nang · 5 co nguoi vao.
 # 17/09: buoc cuoi BAO IPHONE qua ntfy. Ten kenh nam trong secret NTFY_TOPIC, KHONG ghi vao file.
 # 17/09 ban 2: moi con 5/5 mot tin, ba dong: ten·von hoa·cap / nguoi vao·gia dat lenh / y tuong tu khai.
+# 22/09 ban 3: NANG TRAN THOI GIAN 25 -> 50 phut. Bean chot.
+#   Vi sao: luot 21/09 23:16 chay 1.505 giay = 25,08 phut tren tran 1.500 giay. No thoat duoc SAT MEP.
+#   Moi luot sau do vuot tran -> GitHub huy job TRUOC buoc ghi repo -> repo dung o phieu 23:16,
+#   so DO-DEM dung o 23:41, va Bean chi nhan tin "Trang thai: cancelled" (buoc ntfy co if: always()).
+#   Nguyen nhan cham dan: so nho keo 211 -> 247 pool trong mot ngay (178 -> 236 cu goi), va
+#   DO-DEM.md nay 925.829 byte (1.237 dong anh chup + 4.347 dong KQ) phai doc lai moi luot.
+#   🔴 Day CHI la hoan, khong phai chua: so van lon dan. Viec treo #20 o LUAT.md van mo.
 
 on:
   schedule:
@@ -19,7 +26,7 @@ concurrency:
 jobs:
   quet:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
 
