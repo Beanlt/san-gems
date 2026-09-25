@@ -5,6 +5,7 @@
 # SO VE = THU TU CHAY. Doc tu tren xuong la dung thu tu script lam.
 #
 # LOC THO           : dai von hoa · doi ung san · loai thang tu ten          (0 cu them)
+#                     + loai token co phieu chinh thuc theo beacon            (1 cu / 20 con)
 # VE 1  da rot nat  : gia dong cua nen 1h <= 25% DINH  (dinh = CLOSE cao nhat, KHONG lay rau)
 # VE 2  da nam li   : >=20 trong 24 gio gan nhat co close <= nguong do
 # VE 3  het tao day : day nua sau >= day nua truoc cua quang nam im
@@ -103,6 +104,15 @@ DOPPLER_KHOA={"0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544":"DopplerHookInitializ
 DOPPLER_KHOA_OK=(2,3)       # 2 Locked · 3 Graduated = khong con duong rut. 1 Initialized = RUT DUOC
 DOPPLER_TEN=("Uninitialized","Initialized","Locked","Graduated","Exited")
 
+# 🆕 v7.7 (25/09) TOKEN CO PHIEU CHINH THUC — nhan mat bang BEACON, KHONG bang ten.
+#   Robinhood Stock Tokens deu la BeaconProxy do StockFactory 0x4783c67b63de2b358ac5951a7d41f47a38f3c046
+#   dung, cung tro mot beacon (ban cai 'Stock' 0xb35490d6f9163de4f80d88dc75c3516eb64c5ae2).
+#   Gia bam co phieu that -> KHONG BAO GIO la gem. Robinhood co ~200 ma, CO_PHIEU chi ~30 ten.
+#   Do 25/09 tren DO-DEM.md: 14/422 token la hang nay, 347/3.515 dong (9,9%), 0 lan qua ve 1,
+#   va CO_PHIEU bat duoc 0/14 (NFLX · BA · COST · ibm chi canh bao, 10 con lot ca hai danh sach).
+CO_PHIEU_BEACON={"0xe10b6f6b275de231345c20d14ab812db62151b00":"Robinhood Stock Tokens (StockFactory)"}
+SLOT_BEACON="0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"   # o luu beacon EIP-1967
+
 # 🔴 LOAI THANG TU TEN.
 # 🆕 v5.1: bat ca MA DON BAY an theo ticker — NVDAx3L · OPENAIx1L · ANTHROPICx1L · TSLA3S...
 #    Ca that: NVDAx3L lot qua loc tho ngay 12/09 (ca thu SAU cua lo hong danh sach ten).
@@ -141,6 +151,7 @@ def in_nguong():
     print("NGUONG DANG CHAY · MOT LOI DUY NHAT, NAM VE (Bean chot 13/09 — so ve = thu tu chay)")
     print("   LOC THO : mc $%s-$%s · reserve >= $%s · loai thang tu ten"%(
           format(MC_MIN,","),format(MC_MAX,","),format(RESERVE_SO,",")))
+    print("             + loai token co phieu chinh thuc theo beacon (v7.7), KHONG theo ten")
     print("   VE 1 da rot nat : gia <= %.0f%% dinh (dinh = CLOSE nen 1h cao nhat, KHONG lay rau)"%(
           XEP_TOI*100))
     print("   VE 2 da nam li  : >=%d/%d gio gan nhat co close <= nguong tren"%(GIO_CUA,GIO_NAM))
@@ -286,6 +297,26 @@ def loc_tho(pools):
                    "cap":(a.get("name") or "/").split("/")[-1].strip(),
                    "tao":a.get("pool_created_at")})
     return ra
+
+def loc_co_phieu_that(tho):
+    """🆕 v7.7 (25/09). Loai token co phieu CHINH THUC bang o luu beacon EIP-1967 — 1 cu RPC cho 20 con.
+    🔴 LOI GOI -> KHONG loai con nao trong lo do (ve 1 van cat chung). Loi goi khong phai ket qua.
+    Tra ve (giu lai, bi loai, so lo loi goi)."""
+    giu=[]; bo=[]; loi=0
+    for i in range(0,len(tho),20):
+        lo=tho[i:i+20]
+        req=[{"jsonrpc":"2.0","id":k,"method":"eth_getStorageAt","params":[c["base"],SLOT_BEACON,"latest"]}
+             for k,c in enumerate(lo) if c.get("base")]
+        if not req: giu.extend(lo); continue
+        ok,d,ly=rpc(req)
+        if not ok: loi+=1; giu.extend(lo); continue
+        m={r.get("id"):(r.get("result") or "") for r in d}
+        for k,c in enumerate(lo):
+            v=m.get(k,"")
+            b=("0x"+v[-40:].lower()) if len(v)>=42 else ""
+            (bo if b in CO_PHIEU_BEACON else giu).append(c)
+        time.sleep(0.4)
+    return giu,bo,loi
 
 # ---------- 2. VE 1-2-3 — doc tren nen 1 gio, MOT cu cho moi con ----------
 def lap_nen(n):
@@ -967,6 +998,10 @@ def main():
     tho=loc_tho(pools)
     print("qua loc tho (mc $%s-$%s · reserve>=$%s): %d"%(
         format(MC_MIN,","),format(MC_MAX,","),format(RESERVE_SO,","),len(tho)))
+    tho,bo_cp,loi_cp=loc_co_phieu_that(tho)
+    print("loai token co phieu chinh thuc (beacon StockFactory): %d%s%s -> con %d"%(len(bo_cp),
+          (" · "+" ".join(c["ma"] for c in bo_cp)) if bo_cp else "",
+          (" · ⛔ %d lo LOI GOI, con trong lo do KHONG bi loai"%loi_cp) if loi_cp else "",len(tho)))
     if not tho:
         print("KHONG CO GI TRONG DAI"); print("[%d cu · %.0f giay]"%(CU[0],time.time()-T0)); return
 
