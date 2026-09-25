@@ -10,6 +10,8 @@ name: san-gems
 #   Nguyen nhan cham dan: so nho keo 211 -> 247 pool trong mot ngay (178 -> 236 cu goi), va
 #   DO-DEM.md nay 925.829 byte (1.237 dong anh chup + 4.347 dong KQ) phai doc lai moi luot.
 #   🔴 Day CHI la hoan, khong phai chua: so van lon dan. Viec treo #20 o LUAT.md van mo.
+# 25/09 ban 4: DONG Y TUONG DICH SANG TIENG VIET qua MyMemory (mien phi, khong khoa). Bean chot.
+#   Dich hong thi giu cau goc va ghi "(chưa dịch được)" — khong bao gio lam hong luot.
 
 on:
   schedule:
@@ -80,7 +82,7 @@ jobs:
           LINK_LUOT: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           python3 - <<'PY'
-          import os, re, json, html, math, urllib.request
+          import os, re, json, html, math, urllib.request, urllib.parse
 
           TOPIC = os.environ.get("NTFY_TOPIC", "").strip()
           TRANG_THAI = os.environ.get("TRANG_THAI", "")
@@ -112,6 +114,20 @@ jobs:
               except Exception:
                   return s
 
+          def dich(t):
+              """Dich sang tieng Viet qua MyMemory. Hong thi giu nguyen cau goc, ghi ro la chua dich."""
+              try:
+                  u = "https://api.mymemory.translated.net/get?" + urllib.parse.urlencode(
+                      {"q": t[:450], "langpair": "en|vi"})
+                  j = json.loads(urllib.request.urlopen(
+                      urllib.request.Request(u, headers={"User-Agent": UA}), timeout=12).read())
+                  v = html.unescape((j.get("responseData") or {}).get("translatedText") or "").strip()
+                  if str(j.get("responseStatus")) == "200" and v and "MYMEMORY" not in v.upper():
+                      return cat(v)
+              except Exception:
+                  pass
+              return t + " (chưa dịch được)"
+
           def y_tuong(url):
               """Doc DONG GIOI THIEU tren trang chu web du an. Du an TU KHAI, chua kiem."""
               if not url:
@@ -131,14 +147,14 @@ jobs:
               for p in tim:
                   m = re.search(p, raw, re.I)
                   if m and len(m.group(1).strip()) >= 15:
-                      return cat(m.group(1))
+                      return dich(cat(m.group(1)))
               for m in re.finditer(r"<(?:h1|h2|p)[^>]*>(.*?)</(?:h1|h2|p)>", raw, re.I | re.S):
                   t = re.sub(r"<[^>]+>", " ", m.group(1))
                   if len(t.strip()) >= 30:
-                      return cat(t)
+                      return dich(cat(t))
               m = re.search(r"<title[^>]*>(.*?)</title>", raw, re.I | re.S)
               if m and m.group(1).strip():
-                  return cat(m.group(1)) + " (chỉ có tên trang)"
+                  return dich(cat(m.group(1))) + " (chỉ có tên trang)"
               return "web không có chữ đọc được (trang chạy bằng JS)"
 
           def cat(t, n=140):
