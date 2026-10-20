@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # SAN GEMS — MOT loi duy nhat, NAM VE. Bean chot 13/09.
 #   python3 SAN.py DA-BAO.md
+#   🆕 v7.7.2 (20/10, Bean chot A+B): VE 5 THANH SO MO TA, qua 1-2-3-4 = UNG VIEN 4/4, CO VANG khi so vi > +1%.
+#   🆕 v7.7.1 (20/10): script TU GHI so DA-BAO.md cho con 5/5 moi; con da bao trong 48 gio van do du,
+#      in nhan 'DA BAO', khong ban tin iPhone lai. Ly do: SCRIPT.md changelog v7.7.1.
 #
 # SO VE = THU TU CHAY. Doc tu tren xuong la dung thu tu script lam.
 #
@@ -12,8 +15,8 @@
 #       -> ba ve tren doc CUNG MOT chuoi nen, 1 cu cho moi con. Truot la dung.
 # VE 4  sach nang   : locker · vi to nhat · top10 · GoPlus · khu hoi that    (TON CU)
 #       -> chi chay cho con da qua 1-2-3. Qua = DANH SACH THEO DOI, ghi anh chup.
-# VE 5  co nguoi vao: so vi giu TANG va doi ung KHONG bi rut, so voi anh chup cu (0 cu them)
-#       -> chi cham duoc khi da co anh cu. Qua = UNG VIEN.
+# VE 5  co nguoi vao: 🆕 v7.7.2 (Bean chot 20/10) THANH SO MO TA, KHONG CON LA CUA. Qua 1-2-3-4 = UNG VIEN 4/4.
+#       Do tren so 20/10: so vi tang 0-1% = nhieu; tang >1% con XAU hon (LUAT.md 2.5). In CO VANG khi >1%.
 #
 # 🔑 DANH SACH THEO DOI (qua 1-2-3-4) KHONG PHAI UNG VIEN. Chua co su kien nao xay ra.
 # 🔑 FILE NAY LA NGUON DUY NHAT CUA SO. Cac file .md khac chi TRO toi, cam chep lai.
@@ -65,6 +68,9 @@ VE5_CACH_MIN = 1.0    # anh cu gan hon 1 gio -> qua sat, khong cham
 VE5_CACH_MAX = 24.0   # anh cu xa hon 24 gio -> khac tap, khong cham (KYLUAT.md muc 4)
 THUOC2_SAN   = 0.8    # doi ung / ky vong theo can bac hai. Duoi = CO NGUOI RUT
 THUOC2_TRAN  = 1.25   # tren = CO NGUOI BOM. Dai 0,8-1,25 = khong ai dong vao
+VE5_CO_VANG  = 1.0    # 🆕 v7.7.2: so vi tang TREN 1% giua hai anh -> in CO VANG "dang co nguoi duoi cu bat".
+                      #    CHI CANH BAO, KHONG CHAN. Do 20/10 tren DO-DEM.md: con qua 1-4 co so vi tang >1%
+                      #    -> 72h trung vi -42%, 0/38 lan len. Quet 0,5/1/2/3/5% cung chieu (LUAT.md 2.5).
 KQ_MOC       = (6,24,72)   # gio: cham ket qua cho anh cu tai ba moc nay
 KQ_LECH      = 0.35        # sai so cho phep quanh moc (35% cua so moc)
 
@@ -160,9 +166,10 @@ def in_nguong():
           KHU_HOI_MAX,CO_LENH,VI_TO_MAX))
     print("                     top10 <=%.0f%% · GoPlus · doi ung san $%s"%(
           TOP10_MAX,format(int(DOI_UNG_SAN),",")))
-    print("   VE 5 co nguoi vao: so vi TANG va thuoc 2 >= %.2f, so anh chup cach %.0f-%.0f gio"%(
-          THUOC2_SAN,VE5_CACH_MIN,VE5_CACH_MAX))
-    print("      🔑 cua ve 5 la DAU, khong phai muc. Toc do %/gio chi de ghi so.")
+    print("   VE 5 co nguoi vao: 🆕 SO MO TA, KHONG CHAN (Bean chot 20/10) · so anh cach %.0f-%.0f gio"%(
+          VE5_CACH_MIN,VE5_CACH_MAX))
+    print("      ⚠️ CO VANG khi so vi tang > %g%% — tren so 20/10 nhom nay XAU hon, khong phai tot hon"%VE5_CO_VANG)
+    print("   QUA 1-2-3-4 = UNG VIEN 4/4. Bon ve CHUA ve nao duoc kiem la co du bao.")
     print("   KHU HOI = truot gia hai chieu + PHI POOL hai chieu (va 10/09, ca MARIO)")
     print("   KHONG CO MOC BAN. Qua 1-2-3-4 = DANH SACH THEO DOI, chua phai ung vien.")
     print("   SO MO TA, KHONG chan ai: khoi luong 1h/nen · nhip lenh (LUAT.md 2.5 va 7.4)")
@@ -819,7 +826,7 @@ def ve_nam(c,gan):
         c["ve5_ly"]="thieu so vi mot trong hai dau -> KHONG cham"
         print("      ⬜ %s"%c["ve5_ly"]); return
 
-    d_vi=(vi_moi/vi_cu-1)*100; toc=d_vi/cach
+    d_vi=(vi_moi/vi_cu-1)*100; toc=d_vi/cach; c["ve5_dv"]=d_vi; c["ve5_h"]=cach
     print("      so vi   %s -> %s  (%+.1f%% · %+.2f%%/gio) %s"%(
           format(int(vi_cu),","),format(int(vi_moi),","),d_vi,toc,
           "✅ co nguoi vao" if d_vi>0 else "🔴 nguoi ta dang bo di"))
@@ -848,7 +855,7 @@ def ve_nam(c,gan):
 
     c["ve5"] = (d_vi>0) and (t>=THUOC2_SAN)
     c["ve5_ly"]=("so vi %+.1f%% · thuoc 2 %.2f"%(d_vi,t))
-    print("      VE 5 %s  (%s)"%("✅ DAT" if c["ve5"] else "🔴 TRUOT",c["ve5_ly"]))
+    print("      VE 5 (mo ta, KHONG chan) %s  (%s)"%("dau +" if c["ve5"] else "dau -",c["ve5_ly"]))
 
 def cham_ket_qua(het,gia_nay,path=SO_ANH):
     """🆕 13/09. Sau moi luot, cham lai cac anh cu da du tuoi 6h/24h/72h.
@@ -970,6 +977,35 @@ def doc_da_bao(path):
                 except Exception: pass
     return cu
 
+def ghi_da_bao(path,rows):
+    """🆕 v7.7.1 (20/10) VA SO DA BAO. Tu 12/09 (chay.sh viet lai khi gop ba loi) KHONG con ai ghi so nay:
+    script chi IN dong 'DONG DAN VAO SO DA BAO' ma khong dan -> so dung o 12/09, chong bao trung chet,
+    con 5/5 bi ban tin iPhone lai moi luot (GAS: 21 luot 5/5). Nay script tu ghi: moi con 5/5 MOI
+    (chua bao trong GIO_KHONG_BAO_LAI gio) mot dong, dinh dang khop doc_da_bao().
+    Tra ve so dong da ghi."""
+    if not path or not rows: return 0
+    g=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
+    dau=""
+    if os.path.exists(path) and os.path.getsize(path)>0:
+        with open(path,"rb") as f:
+            f.seek(-1,2)
+            if f.read(1)!=b"\n": dau="\n"
+    with open(path,"a",encoding="utf-8") as f:
+        f.write(dau)
+        for c in rows:
+            f.write("%s | %s | %s | MOTLOI\n"%((c.get("base") or "").lower(),g,c["ma"]))
+    return len(rows)
+
+def co_vang(c):
+    """🆕 v7.7.2 (Bean chot 20/10, huong B). CO VANG, KHONG CHAN: so vi tang TREN VE5_CO_VANG % giua hai anh
+    cach 1-24 gio = dang co nguoi DUOI CU BAT. Do tren DO-DEM.md 20/10: nhom nay xau hon, khong tot hon."""
+    c["co_vang"]=False
+    dv=c.get("ve5_dv")
+    if dv is not None and dv>VE5_CO_VANG:
+        c["co_vang"]=True
+        print("   ⚠️ CO VANG: so vi %+.1f%% trong %.1f gio (> %g%%) — dang co nguoi DUOI CU BAT."%(dv,c.get("ve5_h") or 0,VE5_CO_VANG))
+        print("      So 20/10: con qua 1-4 co so vi tang >1%% -> 72h trung vi -42%%, 0/38 lan len. KHONG chan, chi nhac.")
+
 # ---------- MAIN ----------
 def main():
     so_da_bao = sys.argv[1] if len(sys.argv)>1 else None
@@ -1035,7 +1071,7 @@ def main():
     gp=goplus([(c.get("base") or "").lower() for c in cands])
     print("GoPlus: doc duoc %d/%d con"%(len(gp),len(cands)))
 
-    nguong=time.time()-GIO_KHONG_BAO_LAI*3600; theo_doi=[]; ung_vien=[]; ung4=[]
+    nguong=time.time()-GIO_KHONG_BAO_LAI*3600; theo_doi=[]; ung_vien=[]; moi_bao=[]
     for c in sorted(cands,key=lambda x:-(x["dothat"] or 0)):
         kh=khu_hoi(c["dothat"],c.get("phi",0.0)) if c["dothat"] else None
         c["ve4"]=False
@@ -1044,8 +1080,6 @@ def main():
         elif kh>KHU_HOI_MAX:
             tt="LOAI O VE 4 — PHI: khu hoi $%d = %.2f%% > cua %.2f%%  (doi ung $%s · %s)"%(
                 CO_LENH,kh,KHU_HOI_MAX,format(int(c["dothat"]),","),in_phi(c))
-        elif c["base"] in da_bao and da_bao[c["base"]]>=nguong:
-            tt="BO QUA: da bao trong %d gio qua"%GIO_KHONG_BAO_LAI; c["ve4"]=None
         else:
             c["gp"]=gp.get((c.get("base") or "").lower())
             gp_chan,_ = doc_goplus(c["gp"])
@@ -1076,30 +1110,31 @@ def main():
             print("   %s"%doc_cua(c["cua"]))
             print("   khu hoi $%d: %.2f%% / cua %.2f%%  (truot gia hai chieu + %s)"%(
                   CO_LENH,kh,KHU_HOI_MAX,in_phi(c)))
-            ve_nam(c,anh_gan)
-            if c["ve5"] is True:
-                ung_vien.append(c)
-                print("   ⇒ UNG VIEN 5/5 — du ca nam ve")
-                vung_vao(c)
-                thiep(c)
-                print("   ⏰ GIO IN PHIEU: %s  — vao tien muon hon thi DO LAI truoc, xu theo so moi"%gio)
-                print("   DONG DAN VAO SO DA BAO: %s | %s | %s"%(
-                    c["base"],time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime()),c["ma"]))
+            ve_nam(c,anh_gan)     # 🆕 v7.7.2: ve 5 chi con la SO MO TA, KHONG quyet dinh ai len phieu
+            co_vang(c)
+            ung_vien.append(c)
+            bao=da_bao.get((c.get("base") or "").lower())
+            if bao and bao>=nguong:
+                print("   ⇒ UNG VIEN 4/4 · DA BAO %s UTC — khong bao lai iPhone trong %d gio"%(
+                      time.strftime("%d/%m %H:%M",time.gmtime(bao)),GIO_KHONG_BAO_LAI))
             else:
-                # 🆕 v7.2 (Bean chot 16/09): qua 1-2-3-4 = UNG VIEN 4/5, van nam trong theo doi.
-                ung4.append(c)
-                print("   ⇒ UNG VIEN 4/5 — qua 1-2-3-4 · VE 5 %s: %s"%(
-                      "🔴 truot" if c["ve5"] is False else "⬜ chua cham",c.get("ve5_ly") or "—"))
-                print("      🔴 CHUA CO SU KIEN NGUOI VAO. So duoi day la SO DO, KHONG phai lenh vao.")
-                vung_vao(c)
-                thiep(c)
-                print("   ⏰ GIO IN PHIEU: %s  — vao tien muon hon thi DO LAI truoc, xu theo so moi"%gio)
+                print("   ⇒ UNG VIEN 4/4 — qua du bon ve")
+                moi_bao.append(c)
+            print("      🔴 Bon ve CHUA ve nao duoc kiem la co du bao (LUAT.md 9.2). SO DO, khong phai lenh vao.")
+            vung_vao(c)
+            thiep(c)
+            print("   ⏰ GIO IN PHIEU: %s  — vao tien muon hon thi DO LAI truoc, xu theo so moi"%gio)
     print("\nda ghi %d dong anh chup + %d dong ro doi chung vao %s"%(
           ghi_anh(doc,doi_chung=non),len(non),SO_ANH))
+    if moi_bao:
+        print("da ghi %d dong vao so %s: %s"%(ghi_da_bao(so_da_bao,moi_bao),so_da_bao or "(khong co so)",
+              " ".join(c["ma"] for c in moi_bao)))
     print("danh sach theo doi (qua 1-2-3-4): %d"%len(theo_doi))
-    print("UNG VIEN 5/5 (du ca nam ve): %d · %s"%(len(ung_vien)," ".join(c["ma"] for c in ung_vien) or "—"))
-    print("UNG VIEN 4/5 (qua 1-2-3-4, chua co nguoi vao): %d · %s"%(len(ung4)," ".join(c["ma"] for c in ung4) or "—"))
-    if not ung_vien and not ung4: print("KHONG CO UNG VIEN MOI")
+    print("UNG VIEN 4/4 (qua 1-2-3-4): %d · %s"%(len(ung_vien)," ".join(c["ma"] for c in ung_vien) or "—"))
+    vang=[c for c in ung_vien if c.get("co_vang")]
+    print("CO VANG (so vi tang > %g%%, dang co nguoi duoi cu bat): %d · %s"%(VE5_CO_VANG,len(vang),
+          " ".join(c["ma"] for c in vang) or "—"))
+    if not ung_vien: print("KHONG CO UNG VIEN MOI")
     print("[%d cu · %.0f giay]"%(CU[0],time.time()-T0))
 
 main()
