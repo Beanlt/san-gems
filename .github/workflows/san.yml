@@ -12,6 +12,9 @@ name: san-gems
 #   🔴 Day CHI la hoan, khong phai chua: so van lon dan. Viec treo #20 o LUAT.md van mo.
 # 25/09 ban 4: DONG Y TUONG DICH SANG TIENG VIET qua MyMemory (mien phi, khong khoa). Bean chot.
 #   Dich hong thi giu cau goc va ghi "(chưa dịch được)" — khong bao gio lam hong luot.
+# 20/10 ban 5 (SAN.py v7.7.2, Bean chot A+B): VE 5 THOI LA CUA. Bao con 'UNG VIEN 4/4 — qua du bon ve'
+#   (qua 1-2-3-4, LAN DAU trong 48 gio — con da bao in nhan 'DA BAO', khong khop chuoi nen khong bao lai).
+#   Con co CO VANG (so vi tang >1%) thi them canh bao vao dong 2.
 
 on:
   schedule:
@@ -67,10 +70,10 @@ jobs:
           exit 1
 
       # 17/09 BAO IPHONE (ban 2, Bean chot format). Chi bao ba truong hop:
-      #   (1) co con 5/5 -> MOI CON MOT TIN, toi da 3 tin
+      #   (1) co con 4/4 moi (ban 5, 20/10; truoc do la 5/5) -> MOI CON MOT TIN, toi da 3 tin
       #   (2) Bean bam chay tay ma 0 con 5/5 -> tin thu
       #   (3) luot quet hong.
-      #   Con 4/5 KHONG bao. Luot bi cat vi qua 25 phut thi buoc nay KHONG chay.
+      #   Con da bao trong 48 gio KHONG bao lai. Luot bi cat vi qua gio thi buoc nay VAN chay (if: always()).
       #   Dong "Y tuong" doc tu TRANG CHU web du an = DU AN TU KHAI, CHUA KIEM.
       - name: Bao iPhone qua ntfy
         if: always()
@@ -189,7 +192,9 @@ jobs:
                   if s.startswith("web:"):
                       u = s.split(":", 1)[1].strip().split(" · ")[0].strip()
                       c["web"] = u if u.startswith("http") else ""
-                  if "UNG VIEN 5/5 — du ca nam ve" in s and c not in ra:
+                  if s.startswith("⚠️ CO VANG"):
+                      c["vang"] = True
+                  if ("UNG VIEN 4/4 — qua du bon ve" in s or "UNG VIEN 5/5 — du ca nam ve" in s) and c not in ra:
                       ra.append(c)
               return ra
 
@@ -201,12 +206,14 @@ jobs:
               for c in con:
                   a, b = c.get("vi", (0, 0))
                   dong1 = "%s · vốn hoá %s · cặp %s" % (c.get("ten", c["ma"]), c.get("mc", "?"), c.get("cap", "?"))
-                  dong2 = "Người vào: %s → %s ví (%+d) · giá đặt lệnh %s" % (
+                  dong2 = "Số ví: %s → %s (%+d) · giá đặt lệnh %s" % (
                       format(a, ",").replace(",", "."), format(b, ",").replace(",", "."), b - a, c.get("gia", "?"))
+                  if c.get("vang"):
+                      dong2 += " · ⚠️ ví tăng >1%: có người đuổi cú bật"
                   dong3 = "Ý tưởng (tự khai): " + y_tuong(c.get("web", ""))
-                  gui("SĂN GEMS · %s 5/5" % c["ma"], "\n".join([dong1, dong2, dong3]), "rotating_light", LINK_PHIEU)
+                  gui("SĂN GEMS · %s 4/4" % c["ma"], "\n".join([dong1, dong2, dong3]), "rotating_light", LINK_PHIEU)
               if not con and KIEU_CHAY == "workflow_dispatch":
-                  gui("SĂN GEMS · lượt tay xong", "0 con 5/5. Tin thử: ntfy đã thông.", "white_check_mark", LINK_PHIEU)
+                  gui("SĂN GEMS · lượt tay xong", "0 con 4/4 mới. Tin thử: ntfy đã thông.", "white_check_mark", LINK_PHIEU)
               if TRANG_THAI and TRANG_THAI != "success":
                   gui("SĂN GEMS · lượt quét HỎNG", "Trạng thái: %s. Mở lượt này xem bước nào đỏ." % TRANG_THAI,
                       "warning", LINK_LUOT)
