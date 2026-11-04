@@ -15,10 +15,13 @@ name: san-gems
 # 20/10 ban 5 (SAN.py v7.7.2, Bean chot A+B): VE 5 THOI LA CUA. Bao con 'UNG VIEN 4/4 — qua du bon ve'
 #   (qua 1-2-3-4, LAN DAU trong 48 gio — con da bao in nhan 'DA BAO', khong khop chuoi nen khong bao lai).
 #   Con co CO VANG (so vi tang >1%) thi them canh bao vao dong 2.
+# 03/11 ban 6 (Bean chot phuong an B): thi truong xau -> CHI GHI SO, TAT TIN IPHONE, THUA LICH.
+#   Lich 2 gio -> 6 gio (12 -> 4 luot/ngay). Buoc ntfy dat if: false (giu nguyen code de bat lai).
+#   Bat lai: doi cron ve '17 */2 * * *' va doi 'if: false' ve 'if: always()' o buoc Bao iPhone.
 
 on:
   schedule:
-    - cron: '17 */2 * * *'
+    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -76,7 +79,7 @@ jobs:
       #   Con da bao trong 48 gio KHONG bao lai. Luot bi cat vi qua gio thi buoc nay VAN chay (if: always()).
       #   Dong "Y tuong" doc tu TRANG CHU web du an = DU AN TU KHAI, CHUA KIEM.
       - name: Bao iPhone qua ntfy
-        if: always()
+        if: false   # 03/11 tat tin (phuong an B). Bat lai: if: always()
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           TRANG_THAI: ${{ job.status }}
