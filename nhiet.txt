@@ -1,0 +1,25 @@
+NHIET · 2026-11-05 00:14 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
+nguong dang chay: chuoi=7 · be phong >= $1.0 tr/7 ngay · toi da 12 dong · goi lai 2 lan
+CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc | 30 ngay so 30 ngay truoc
+  Ethereum          $1.85 ty   $18.57 ty    +140%     +21%
+  Hyperliquid L1   $329.5 tr    $2.88 ty     +66%      -9%
+  Arbitrum         $154.2 tr    $1.39 ty     +27%     -12%
+  Base             $852.3 tr    $7.42 ty     +21%      +4%
+  BSC              $871.9 tr    $6.38 ty      -4%     -22%
+  Robinhood Chain  $575.5 tr    $4.27 ty      -6%     -51%
+  Solana            $1.88 ty   $11.74 ty      -9%     -27%
+BE PHONG (nhom Launchpad, 7 ngay >= $1.0 tr) | chuoi | 7 ngay | 7/7 | 30/30
+  pump.fun               Solana            $821.7 tr     -13%     +25%
+  Meteora Dynamic Bondin Solana             $69.8 tr     +10%     -24%
+  Flap sh                BSC,X Layer        $56.1 tr      -9%     -46%
+  LaunchLab              Solana             $51.3 tr     +36%     -64%
+  Pons V2                Robinhood Chain    $29.8 tr     -26%     -90%
+  StonkFun               Solana             $22.9 tr     -46%     -82%
+  Frontier               Robinhood Chain     $6.7 tr   +1428%    +513%
+  Alt Fun                Hyperliquid L1      $2.3 tr  +22788%    +174%
+  four.meme              BSC                 $2.1 tr     -36%     -60%
+  Genius.fun             BSC                 $1.5 tr     -25%     -91%
+  Umia                   Base                $1.4 tr     +15%     +20%
+🔴 Be phong tang manh co the chi do MOT token (LUAT.md 12 luat 3) — dem so token truoc khi doc la 'nong'.
+🔴 Bang noi O DAU, khong noi VI SAO. Chua cham viec treo #26 thi khong dung de quyet gi.
+
