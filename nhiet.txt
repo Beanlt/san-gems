@@ -1,22 +1,22 @@
-NHIET · 2026-11-06 06:55 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
+NHIET · 2026-11-06 19:28 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
 nguong dang chay: chuoi=7 · be phong >= $1.0 tr/7 ngay · toi da 12 dong · goi lai 2 lan
 CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc | 30 ngay so 30 ngay truoc
   Hyperliquid L1   $429.9 tr    $2.65 ty     +22%      -4%
-  Ethereum          $2.72 ty   $15.84 ty     +21%     +28%
-  Base              $1.88 ty    $8.15 ty     +18%      +5%
+  Ethereum          $2.73 ty   $15.85 ty     +21%     +28%
+  Base              $1.90 ty    $8.21 ty     +19%      +5%
   Arbitrum         $348.3 tr    $1.50 ty     +16%      -5%
-  Robinhood Chain  $975.0 tr    $4.50 ty      -2%     -48%
-  Solana            $2.18 ty   $11.09 ty     -12%     -27%
-  BSC               $1.06 ty    $6.05 ty     -15%     -17%
+  Solana            $2.20 ty   $12.29 ty      -2%     -26%
+  Robinhood Chain  $979.4 tr    $4.52 ty      -2%     -48%
+  BSC               $1.07 ty    $6.08 ty     -15%     -17%
 BE PHONG (nhom Launchpad, 7 ngay >= $1.0 tr) | chuoi | 7 ngay | 7/7 | 30/30
-  pump.fun               Solana            $708.1 tr     -21%     +10%
+  pump.fun               Solana            $816.4 tr      -9%     +13%
   Meteora Dynamic Bondin Solana             $61.8 tr      -1%     -34%
   Flap sh                BSC,X Layer        $48.1 tr     -20%     -52%
-  LaunchLab              Solana             $36.8 tr     -29%     -69%
+  LaunchLab              Solana             $43.4 tr     -16%     -67%
   Pons V2                Robinhood Chain    $27.0 tr     -32%     -89%
-  StonkFun               Solana             $13.1 tr     -71%     -86%
+  StonkFun               Solana             $14.3 tr     -68%     -86%
   Frontier               Robinhood Chain     $5.8 tr    +138%    +610%
-  four.meme              BSC                 $3.2 tr     +13%     -62%
+  four.meme              BSC                 $3.4 tr     -11%     -70%
   Umia                   Base                $1.0 tr     -37%      +6%
 🔴 Be phong tang manh co the chi do MOT token (LUAT.md 12 luat 3) — dem so token truoc khi doc la 'nong'.
 🔴 Bang noi O DAU, khong noi VI SAO. Chua cham viec treo #26 thi khong dung de quyet gi.
