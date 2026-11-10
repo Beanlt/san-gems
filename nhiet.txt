@@ -1,20 +1,20 @@
-NHIET · 2026-11-10 07:26 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
+NHIET · 2026-11-10 19:48 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
 nguong dang chay: chuoi=7 · be phong >= $1.0 tr/7 ngay · toi da 12 dong · goi lai 2 lan
 CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc | 30 ngay so 30 ngay truoc
   Robinhood Chain  $703.7 tr    $4.53 ty      +6%     -46%
   Arbitrum         $204.3 tr    $1.45 ty      +5%      -3%
   Base              $1.19 ty    $7.75 ty      +3%      +5%
-  BSC              $993.8 tr    $6.38 ty      -1%      -5%
-  Solana            $1.29 ty   $10.70 ty      -6%     -27%
+  Solana            $1.49 ty   $11.39 ty      -0%     -27%
+  BSC               $1.01 ty    $6.40 ty      -1%      -5%
   Hyperliquid L1   $379.1 tr    $2.34 ty     -15%      -1%
-  Ethereum          $1.89 ty   $12.53 ty     -30%     +29%
+  Ethereum          $1.90 ty   $12.54 ty     -30%     +29%
 BE PHONG (nhom Launchpad, 7 ngay >= $1.0 tr) | chuoi | 7 ngay | 7/7 | 30/30
-  pump.fun               Solana            $645.6 tr     -23%      -4%
-  LaunchLab              Solana             $69.5 tr     +49%     -56%
+  pump.fun               Solana            $736.6 tr     -12%      -2%
+  LaunchLab              Solana             $87.5 tr     +88%     -52%
   Flap sh                BSC,X Layer        $42.2 tr     -26%     -49%
   Meteora Dynamic Bondin Solana             $41.3 tr     -42%     -46%
   Pons V2                Robinhood Chain    $27.0 tr     -16%     -86%
-  StonkFun               Solana             $10.9 tr     -52%     -88%
+  StonkFun               Solana             $11.5 tr     -49%     -88%
   four.meme              BSC                 $3.7 tr     +43%     -66%
   Frontier               Robinhood Chain     $3.3 tr     -46%    +844%
   Umia                   Base                $1.1 tr     -22%     -12%
