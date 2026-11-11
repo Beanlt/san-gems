@@ -1,22 +1,22 @@
-NHIET · 2026-11-11 06:36 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
+NHIET · 2026-11-11 19:40 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
 nguong dang chay: chuoi=7 · be phong >= $1.0 tr/7 ngay · toi da 12 dong · goi lai 2 lan
 CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc | 30 ngay so 30 ngay truoc
-  Arbitrum         $210.1 tr    $1.51 ty      +9%      +2%
+  Arbitrum         $210.4 tr    $1.51 ty      +9%      +2%
   Base              $1.10 ty    $7.99 ty      +7%      +8%
   Robinhood Chain  $553.5 tr    $4.51 ty      +5%     -43%
-  BSC              $860.5 tr    $6.37 ty      -0%      -1%
-  Solana            $1.34 ty   $10.16 ty     -13%     -25%
+  BSC              $861.2 tr    $6.38 ty      -0%      -1%
+  Solana            $1.34 ty   $10.85 ty      -8%     -24%
   Hyperliquid L1   $345.4 tr    $2.35 ty     -18%      +0%
-  Ethereum          $2.00 ty   $12.67 ty     -32%     +35%
+  Ethereum          $2.00 ty   $12.69 ty     -32%     +35%
 BE PHONG (nhom Launchpad, 7 ngay >= $1.0 tr) | chuoi | 7 ngay | 7/7 | 30/30
-  pump.fun               Solana            $610.4 tr     -26%      -8%
-  LaunchLab              Solana             $76.8 tr     +50%     -51%
-  Montra                 Elysium Kinetiq    $44.7 tr        —        —
+  pump.fun               Solana            $702.5 tr     -14%      -6%
+  LaunchLab              Solana             $83.3 tr     +62%     -49%
+  Montra                 Elysium            $63.0 tr        —        —
   Flap sh                BSC,X Layer        $43.1 tr     -23%     -49%
   Meteora Dynamic Bondin Solana             $37.3 tr     -47%     -48%
   Pons V2                Robinhood Chain    $26.2 tr     -12%     -85%
-  Ascend Launchpad       Elysium Kinetiq    $19.3 tr        —        —
-  StonkFun               Solana              $5.0 tr     -78%     -88%
+  Ascend Launchpad       Elysium            $19.3 tr        —        —
+  StonkFun               Solana              $5.3 tr     -77%     -88%
   four.meme              BSC                 $4.2 tr     +81%     -62%
   Frontier               Robinhood Chain     $3.1 tr     -54%    +901%
   Umia                   Base                $1.1 tr     -17%      -6%
