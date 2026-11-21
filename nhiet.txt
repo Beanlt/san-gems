@@ -1,23 +1,23 @@
-NHIET · 2026-11-20 20:28 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
+NHIET · 2026-11-21 07:18 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
 nguong dang chay: chuoi=7 · be phong >= $1.0 tr/7 ngay · toi da 12 dong · goi lai 2 lan
 CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc | 30 ngay so 30 ngay truoc
-  Hyperliquid L1   $326.5 tr    $3.19 ty     +58%     +23%
-  Arbitrum         $144.8 tr    $1.55 ty     +26%     +12%
-  Base              $1.22 ty    $8.52 ty     +25%      +7%
-  Solana            $1.90 ty   $11.31 ty     +21%     -26%
-  BSC              $820.0 tr    $7.25 ty     +20%      +2%
-  Ethereum          $1.66 ty   $12.40 ty     +14%     +49%
-  Robinhood Chain  $643.9 tr    $4.00 ty      +1%     -42%
+  Hyperliquid L1   $765.3 tr    $3.41 ty     +53%     +30%
+  Arbitrum         $333.9 tr    $1.60 ty     +26%     +20%
+  Base              $1.38 ty    $8.47 ty     +19%      +9%
+  Solana            $1.84 ty   $10.67 ty     +13%     -27%
+  BSC               $1.18 ty    $7.11 ty     +11%      +4%
+  Ethereum          $2.61 ty   $12.69 ty     +10%     +56%
+  Robinhood Chain  $645.9 tr    $4.07 ty      +7%     -40%
 BE PHONG (nhom Launchpad, 7 ngay >= $1.0 tr) | chuoi | 7 ngay | 7/7 | 30/30
-  pump.fun               Solana            $733.3 tr     +11%     -28%
-  Flap sh                BSC,X Layer        $44.0 tr     -12%     -57%
-  Meteora Dynamic Bondin Solana             $36.2 tr      -3%     -54%
-  Pons V2                Robinhood Chain    $14.5 tr     -31%     -78%
-  LaunchLab              Solana             $10.5 tr     -86%     -35%
-  Montra                 Elysium             $8.6 tr     -90%        —
-  four.meme              BSC                 $5.8 tr     +39%     -39%
-  StonkFun               Solana              $3.6 tr      -8%     -86%
-  Ascend Launchpad       Elysium             $2.9 tr     -92%        —
+  pump.fun               Solana            $624.7 tr      -6%     -32%
+  Flap sh                BSC,X Layer        $42.5 tr     -15%     -58%
+  Meteora Dynamic Bondin Solana             $34.4 tr     -13%     -55%
+  Pons V2                Robinhood Chain    $14.5 tr     -23%     -77%
+  LaunchLab              Solana              $9.0 tr     -87%     -30%
+  Montra                 Elysium             $6.2 tr     -92%        —
+  four.meme              BSC                 $4.2 tr     -28%     -36%
+  StonkFun               Solana              $3.0 tr     -23%     -85%
+  Ascend Launchpad       Elysium             $2.7 tr     -92%        —
 🔴 Be phong tang manh co the chi do MOT token (LUAT.md 12 luat 3) — dem so token truoc khi doc la 'nong'.
 🔴 Bang noi O DAU, khong noi VI SAO. Chua cham viec treo #26 thi khong dung de quyet gi.
 
