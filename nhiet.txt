@@ -1,4 +1,4 @@
-NHIET · 2026-11-27 08:43 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
+NHIET · 2026-11-27 21:24 UTC — tien chay ve dau (CHI DE DOC, khong phai lenh mua · LUAT.md muc 12)
 nguong dang chay: chuoi=7 · be phong >= $1.0 tr/7 ngay · toi da 12 dong · goi lai 2 lan
 CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc | 30 ngay so 30 ngay truoc
   Robinhood Chain  $435.1 tr    $4.01 ty      +0%     -34%
@@ -6,18 +6,18 @@ CHUOI (khoi luong san phi tap trung) | 24 gio | 7 ngay | 7 ngay so 7 ngay truoc 
   Hyperliquid L1   $177.8 tr    $2.18 ty     -10%     +49%
   BSC              $520.4 tr    $6.43 ty     -11%      +1%
   Ethereum          $1.03 ty   $10.83 ty     -13%     +66%
+  Solana           $870.6 tr    $9.85 ty     -13%     -24%
   Arbitrum          $96.5 tr    $1.32 ty     -15%     +30%
-  Solana            $1.23 ty    $9.41 ty     -17%     -25%
 BE PHONG (nhom Launchpad, 7 ngay >= $1.0 tr) | chuoi | 7 ngay | 7/7 | 30/30
-  pump.fun               Solana            $560.8 tr     -24%     -36%
+  pump.fun               Solana            $668.7 tr      -9%     -34%
   Flap sh                BSC,X Layer        $56.3 tr     +28%     -53%
   Meteora Dynamic Bondin Solana             $27.5 tr     -24%     -58%
-  LaunchLab              Solana             $20.0 tr     +89%     -16%
+  LaunchLab              Solana             $21.6 tr    +105%     -15%
   Montra                 Elysium            $19.0 tr    +120%        —
   Pons V2                Robinhood Chain    $12.4 tr     -15%     -73%
   four.meme              BSC                 $4.7 tr     -19%     -29%
   Ascend Launchpad       Elysium             $2.0 tr     -31%        —
-  StonkFun               Solana              $1.3 tr     -64%     -88%
+  StonkFun               Solana              $1.4 tr     -60%     -88%
 🔴 Be phong tang manh co the chi do MOT token (LUAT.md 12 luat 3) — dem so token truoc khi doc la 'nong'.
 🔴 Bang noi O DAU, khong noi VI SAO. Chua cham viec treo #26 thi khong dung de quyet gi.
 
